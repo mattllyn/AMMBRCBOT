@@ -466,6 +466,14 @@ API.on(API.CHAT, function(data){
           }
           break;
 
+case "clear":
+if(API.getUser(data.fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
+if(typeof command[1] === "undefined"){
+API.moderateDeleteChat(chatID)
+API.sendChat("Apagando Chat");
+}
+}
+break;
         case "facebook":
         case "fb":
           if(API.getUser(fromID).permission < 2 || Countrybot.admins.indexOf(fromID) > -1){
