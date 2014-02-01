@@ -1866,4 +1866,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat('AMMBR SCRIPT v'+ Countrybot.misc.version +' USE COM MODERAÇÃO!')
+//API.sendChat('AMMBR SCRIPT v'+ Countrybot.misc.version +' USE COM MODERAÇÃO!')
