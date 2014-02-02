@@ -71,9 +71,9 @@ Countrybot.settings.maxLength = 10;
 Countrybot.settings.cooldown = 10;
 Countrybot.settings.staffMeansAccess = true;
 Countrybot.settings.historyFilter = true;
-Countrybot.settings.swearFilter = true;
-Countrybot.settings.commandFilter = true;
-Countrybot.settings.racismFilter = true;
+Countrybot.settings.swearFilter = false;
+Countrybot.settings.commandFilter = false;
+Countrybot.settings.racismFilter = false;
 Countrybot.settings.beggerFilter = true;
 Countrybot.settings.interactive = true;
 Countrybot.settings.ruleSkip = true;
@@ -118,7 +118,7 @@ $('#woot').click();
 API.on(API.USER_JOIN, UserJoin);
 function UserJoin(user)
 {
-  API.sendChat("Bem-vindo ao Animes Music Music @"+ user.username +" Divirta-se! Respeite as .regras e os .temas!");
+  API.sendChat("Bem-vindo ao Animes Music Music @"+ user.username +" Divirta-se! Respeite as +regras e os +temas!");
 }
 /*
 API.on(API.USER_LEAVE, UserLeave);
@@ -228,7 +228,7 @@ botMethods.djAdvanceEvent = function(data){
 };
 
 API.on(API.CHAT, function(data){
-  if(data.message.indexOf('.') === 0){
+  if(data.message.indexOf('+') === 0){
     var msg = data.message, from = data.from, fromID = data.fromID;
     var command = msg.substring(1).split(' ');
     if(typeof command[2] != "undefined"){
@@ -283,7 +283,7 @@ break;
 
         case "comandos":
           if(API.getUser(fromID).permission < 2 || API.getUser(fromID).permission > 1){
-            API.sendChat(".{comandos}");
+            API.sendChat("comandos");
             setTimeout(function(){
               API.sendChat("regras | temas | add | link | fb | define | mystats | userstats | songlink | download | votos | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
             }, 650);
@@ -488,7 +488,7 @@ break;
 });
 
 API.on(API.CHAT, function(data){
-  if(data.message.indexOf('.') === 0){
+  if(data.message.indexOf('+') === 0){
     var msg = data.message, from = data.from, fromID = data.fromID;
     var command = msg.substring(1).split(' ');
     if(typeof command[2] != "undefined"){
@@ -871,7 +871,7 @@ API.on(API.CHAT, function(data){
 });
 
 API.on(API.CHAT, function(data){
-  if(data.message.indexOf('.') === 0){
+  if(data.message.indexOf('+') === 0){
     var msg = data.message, from = data.from, fromID = data.fromID;
     var command = msg.substring(1).split(' ');
     if(typeof command[2] != "undefined"){
@@ -1654,4 +1654,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat('Anime MM Script loaded v'+ Countrybot.misc.version +' !')
+API.sendChat('Anime MM Script loaded v'+ Countrybot.misc.version +' Para usar os comandos digite + antes ''+fb'' !')
