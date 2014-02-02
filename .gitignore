@@ -120,26 +120,26 @@ function UserJoin(user)
 {
   API.sendChat("Bem-vindo ao Animes Music Music @"+ user.username +"!");
 }
-
+/*
 API.on(API.USER_LEAVE, UserLeave);
 function UserLeave(user)
 {
 API.sendChat(user.username +" saiu da sala.");
   //alert(user.username + " saiu da sala");
 }
-
+*/
 API.on(API.VOTE_SKIP, SKIP);
 function SKIP() {
   API.sendChat("Desculpe, não toque esta música de novo.");
 }
-
+/*
 API.on(API.CURATE_UPDATE, callback);
 function callback(obj)
 {
   var media = API.getMedia();
   API.sendChat(obj.user.username + " Adicionou a música!");
 }
-
+*/
 function djAdvanceEvent(data){
     setTimeout(function(){ botMethods.data }, 500);
 }
@@ -1654,4 +1654,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat('Anime MM Script loaded v'+ Countrybot.misc.version +' Use: .registrar!')
+API.sendChat('Anime MM Script loaded v'+ Countrybot.misc.version +' !')
