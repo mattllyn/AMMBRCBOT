@@ -170,8 +170,8 @@ SoundUniverseBot.prototype = {
 		this.lang['en']['USERSTATS'] 		=	'@%username% [%target% Estatisticas] - Tocou: %joins%, Legal: %woots%, Chato: %mehs%, Votos: %votes%, ';
 		this.lang['en']['USERSTATS'] 		+=	'Curates: %curates%, Musicas: %songs%, Pulos: %skips%.';
 
-		this.lang['en']['PLAYED'] 		= 	'%username% Tocou: %trackauthor% - %tracktitle%';
-		this.lang['en']['PLAYED'] 		+=	' [Status] :+1: %woot% | :purple_heart: %love% | :-1: %meh%';
+		//this.lang['en']['PLAYED'] 		= 	'%username% Tocou: %trackauthor% - %tracktitle%';
+		//this.lang['en']['PLAYED'] 		+=	' [Status] :+1: %woot% | :purple_heart: %love% | :-1: %meh%';
 
 		this.lang['en']['TOO_LONG']					= '%username% a musica é muito longa.';
 
