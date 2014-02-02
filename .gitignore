@@ -285,7 +285,7 @@ break;
           if(API.getUser(fromID).permission < 2 || API.getUser(fromID).permission > 1){
             API.sendChat("comandos");
             setTimeout(function(){
-              API.sendChat("regras | temas | add | link | fb | define | mystats | songlink | download | votos | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
+              API.sendChat("regras | temas | add | link | fb | autowoot | define | mystats | songlink | download | votos | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
             }, 650);
             setTimeout(function(){
               API.sendChat("test | meuid | entrar | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
