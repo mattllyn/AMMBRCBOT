@@ -177,7 +177,7 @@ SoundUniverseBot.prototype = {
 
 		this.lang['en']['LANG_CHANGED']				= '@%username% The language is set to %code%.';
 		this.lang['en']['ALREADY_REGISTERED']		= '@%username% Você já está registrado.';
-		this.lang['en']['NOT_REGISTERED']			= '@%username% Você não é registrado. Use: +registrar';
+		this.lang['en']['NOT_REGISTERED']			= '@%username% Você não é registrado. Use: !registrar';
 		this.lang['en']['REGISTER'] 				= '@%username% Você foi registrado com sucesso.';
 		this.lang['en']['USER_NOT_FOUND']			= '@%username% O usuario %target% não pode ser encontrado.';
 		this.lang['en']['USER_FAN']					= '@%username% :kiss:';
@@ -564,7 +564,7 @@ SoundUniverseBot.prototype = {
 		switch(data.message)
 		{
 
-			case '+entrar':
+			case '!entrar':
 				var user = API.getUser(data.fromID);
 				if(user.permission > 1){
 
@@ -578,7 +578,7 @@ SoundUniverseBot.prototype = {
 				}
 
 				break;
-			case '+sair':
+			case '!sair':
 				var user = API.getUser(data.fromID);
 				if(user.permission > 1){
 
@@ -592,7 +592,7 @@ SoundUniverseBot.prototype = {
 				}
 
 				break;
-			case '+registrar':
+			case '!registrar':
 				if(typeof this.users[data.fromID] == 'undefined')
 				{
 					str = this.translate(lang,'REGISTER');
@@ -611,21 +611,21 @@ SoundUniverseBot.prototype = {
 					str = this.translate(lang,'ALREADY_REGISTERED');
 
 				break;
-			case '+stats':
+			case '!stats':
 				str = this.translate(lang,'STATS');
 				str = str.replace('%woots%',	this.statistics.woots);
 				str = str.replace('%mehs%',		this.statistics.mehs);
 				str = str.replace('%votes%',	this.statistics.woots + this.statistics.mehs);
 				str = str.replace('%curates%',	this.statistics.curates);
 				break;
-			case '+stats2':
+			case '!stats2':
 				str = this.translate(lang,'STATS2');
 				str = str.replace('%skips%',	this.statistics.skips);
 				str = str.replace('%songs%',	this.statistics.songs);
 				str = str.replace('%joins%',	this.statistics.joins);
 				str = str.replace('%users%',	Object.keys(this.users).length);
 				break;
-			case '+mystats':
+			case '!mystats':
 				if(typeof this.users[data.fromID] != 'undefined')
 				{
 					str = this.sprintUserStats(lang,data.fromID,this.translate(lang,'W_USER'));
