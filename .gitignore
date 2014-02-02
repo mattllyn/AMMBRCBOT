@@ -88,7 +88,7 @@ Countrybot.admins =
 
 Countrybot.filters.swearWords = ["Filho da puta","viado","chupa meu pinto","Vai Tomar no cu", "Vai se foder", "puta","puto","cacete","idiota","motherfucker","seu merda","pau no cu"];
 
-Countrybot.filters.commandWords = ["+say","+songlink","+comandos","+bansong 1","+down","+entrar","+woot","+meh","+status","+tcf","+cf","+regras","+version","+test","+cancel","+temas","+source"];
+Countrybot.filters.commandWords = ["+say","+songlink","+comandos","+bansong 1","+down","+autowoot","+entrar","+woot","+meh","+status","+tcf","+cf","+regras","+version","+test","+cancel","+temas","+source"];
 
 Countrybot.filters.racistWords = ["nigger","seu macaco","kike","spick","porchmonkey","camel jockey","towelhead","towel head","chink","gook","porch monkey","seu preto","nigga"];
 
@@ -821,12 +821,12 @@ API.on(API.CHAT, function(data){
           botMethods.save();
           break;
 
-        case "save":
+         case "save":
           if(Countrybot.admins.indexOf(fromID) > -1){
             botMethods.save();
-            API.sendChat("Configurações salvas.");
+            API.sendChat("Settings saved.");
           }else{
-            API.sendChat("Este comando pode ser usado apenas por administradores!");
+            API.sendChat("This command requires Admins only!");
           }
           break;
 
@@ -1600,7 +1600,7 @@ API.on(API.CHAT, function(data){
   for(var i = 0; i < Countrybot.filters.beggerWords.length; i++){
       if(msg.indexOf(Countrybot.filters.beggerWords[i].toLowerCase()) > -1 && Countrybot.settings.beggerFilter){
         API.moderateDeleteChat(chatID);
-      responses = ["Good idea @{beggar}!  Don't earn your fans or anything thats so yesterday", "Guys @{beggar} asked us to fan him!  Lets all totally do it! ?_?", "srsly @{beggar}? ?_?", "@{beggar}.  Earning his fans the good old fashioned way.  Hard work and elbow grease.  A true american."];
+      responses = ["Que feio @{beggar}!  Não mendige fãs!"];
       r = Math.floor(Math.random() * responses.length);
         API.sendChat(responses[r].replace("{beggar}", data.from));
     }
