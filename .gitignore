@@ -342,11 +342,11 @@ break;
 
         case "temas":
           if(typeof command[1] == "undefined"){
-            API.sendChat("Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock.");
+            API.sendChat("Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
           }else if(command[1].indexOf("@") > -1){
-            API.sendChat(command[1]+"Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock.");
+            API.sendChat(command[1]+"Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
           }else{
-            API.sendChat("Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock.");
+            API.sendChat("Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
           }
           if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
             Countrybot.misc.ready = false;
