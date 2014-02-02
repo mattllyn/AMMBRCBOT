@@ -1654,4 +1654,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat('AMMBR SCRIPT V'+ Countrybot.misc.version +' USE COM MODERAÇÃO!')
+API.sendChat('Anime MM Script loaded v'+ Countrybot.misc.version +' Use: .registrar!')
