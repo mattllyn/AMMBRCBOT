@@ -1238,7 +1238,7 @@ case "drugs":
                 }, 650);
                 break;
               case 1:
-                API.sendChat("/me deu um abraço de uso em @"+command[1]+" ");
+                API.sendChat("/me deu um abraço de urso em @"+command[1]+" ");
                 break;
               case 2:
                 API.sendChat("/me deu um abraço gostosinho em @"+command[1]+" ");
@@ -1259,7 +1259,7 @@ case "drugs":
                 }, 650);
                 break;
               case 1:
-                API.sendChat("/me deu um abraço de uso em @"+command[1]+" ");
+                API.sendChat("/me deu um abraço de urso em @"+command[1]+" ");
                 break;
               case 2:
                 API.sendChat("/me deu um abraço gostosinho em @"+command[1]+" ");
