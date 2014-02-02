@@ -288,7 +288,7 @@ break;
               API.sendChat("regras | temas | add | link | fb | define | mystats | userstats | songlink | download | votos | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
             }, 650);
             setTimeout(function(){
-              API.sendChat("test | meuid | entrar | sair | stats | stats2 | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
+              API.sendChat("test | meuid | entrar | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
             }, 1000);
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
@@ -1646,11 +1646,11 @@ botMethods.loadStorage();
 console.log("bot version " + Countrybot.misc.version);
 
 setTimeout(function(){
-  $.getScript('http://goo.gl/yAo82O');
+  $.getScript('http://goo.gl/RooRd6');
 }, 1000);
 setTimeout(function(){
   SC.initialize({
-    client_id: 'eae62c8e7a30564e9831b9e43f1d484aa'
+    client_id: 'eae62c8e7a30564e9831b9e43f1d484a'
   });
 }, 3000);
 
