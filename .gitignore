@@ -294,7 +294,7 @@ break;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
           break;
-		 case "autowoot"
+		 case "autowoot":
 		 API.sendChat("Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
 		 }
 		 break;
