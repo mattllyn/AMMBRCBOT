@@ -1654,4 +1654,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat('Anime MM Script loaded v'+ Countrybot.misc.version +' Para usar os comandos digite + antes ''+fb'' !')
+API.sendChat('Anime MM Script loaded v'+ Countrybot.misc.version +' Para usar os comandos digite +{comando}!')
