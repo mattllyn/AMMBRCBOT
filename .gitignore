@@ -88,7 +88,7 @@ Countrybot.admins =
 
 Countrybot.filters.swearWords = ["Filho da puta","viado","caralho","chupa meu pinto","Vai Tomar no cu", "Vai se foder", "puta merda", "cú", "cacete", "imbecil", "bicha", "gay","idiota","vagina","Fudeu","motherfucker","seu merda","pau no cu","idiota","puta"];
 
-Countrybot.filters.commandWords = [".say",".songlink",".comandos",".bansong 1",".down",".entrar",".woot",".meh",".status",".tcf",".cf",".regras",".version",".test",".cancel",".temas",".source"];
+Countrybot.filters.commandWords = ["+say","+songlink","+comandos","+bansong 1","+down","+entrar","+woot","+meh","+status","+tcf","+cf","+regras","+version","+test","+cancel","+temas","+source"];
 
 Countrybot.filters.racistWords = ["nigger","kike","spick","porchmonkey","camel jockey","towelhead","towel head","chink","gook","porch monkey","seu preto","nigga","macaco"];
 
@@ -285,7 +285,7 @@ break;
           if(API.getUser(fromID).permission < 2 || API.getUser(fromID).permission > 1){
             API.sendChat("comandos");
             setTimeout(function(){
-              API.sendChat("regras | temas | add | link | fb | autowoot | define | mystats | songlink | download | votos | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
+              API.sendChat("regras | temas | add | link | fb | define | mystats | songlink | download | votos | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
             }, 650);
             setTimeout(function(){
               API.sendChat("test | meuid | entrar | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
@@ -295,6 +295,13 @@ break;
           }
           break;
 
+        case "autowoot":
+          if(API.getUser(fromID).permission < 2 || Countrybot.admins.indexOf(fromID) > -1){
+            API.sendChat(data.from +" Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
+            Countrybot.misc.ready = false;
+            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
+          }
+          break;
         case "meuid":
           if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
             API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
