@@ -638,7 +638,7 @@ SoundUniverseBot.prototype = {
 
 				var commandFound = false, index = -1, needle;
 
-				needle = '+userstats ';
+				needle = '.userstats';
 				index = data.message.search(needle);
 				if(index === 0)
 				{
