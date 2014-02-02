@@ -86,11 +86,11 @@ Countrybot.admins =
 
 // Filtering Chat Words below
 
-Countrybot.filters.swearWords = ["Filho da puta","viado","caralho","chupa meu pinto","Vai Tomar no cu", "Vai se foder", "puta merda", "cú", "cacete", "imbecil", "bicha", "gay","idiota","vagina","Fudeu","motherfucker","seu merda","pau no cu","idiota","puta"];
+Countrybot.filters.swearWords = ["Filho da puta","viado","chupa meu pinto","Vai Tomar no cu", "Vai se foder", "puta","puto","cacete","idiota","motherfucker","seu merda","pau no cu"];
 
 Countrybot.filters.commandWords = ["+say","+songlink","+comandos","+bansong 1","+down","+entrar","+woot","+meh","+status","+tcf","+cf","+regras","+version","+test","+cancel","+temas","+source"];
 
-Countrybot.filters.racistWords = ["nigger","kike","spick","porchmonkey","camel jockey","towelhead","towel head","chink","gook","porch monkey","seu preto","nigga","macaco"];
+Countrybot.filters.racistWords = ["nigger","seu macaco","kike","spick","porchmonkey","camel jockey","towelhead","towel head","chink","gook","porch monkey","seu preto","nigga"];
 
 Countrybot.filters.beggerWords = ["fa4fa","fan me","virem meu fan","virem meu fa","retribui fan","f4f","fan for fan","fan pls","fans please","fan please","fan 4 fan","fan back","give me fans","gimme fans","fan back", "how do i be"];
 
