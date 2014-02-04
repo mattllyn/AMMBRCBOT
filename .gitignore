@@ -88,7 +88,7 @@ Countrybot.admins =
 
 Countrybot.filters.swearWords = ["Filho da puta","viado","chupa meu pinto","Vai Tomar no cu", "Vai se foder", "puta","puto","cacete","idiota","motherfucker","seu merda","pau no cu"];
 
-Countrybot.filters.commandWords = ["!say","!songlink","!comandos","!bansong 1","!down","!autowoot","!entrar","!woot","!meh","!status","!tcf","!cf","!regras","!version","!test","!cancel","!temas","!source"];
+Countrybot.filters.commandWords = ["!say","!songlink","!comandos","!bansong 1","!down","!autowoot","!entrar","!woot","!meh","!status","!tcf","!cf","!regras","!temas","!version","!test","!cancel","!temas","!source"];
 
 Countrybot.filters.racistWords = ["nigger","seu macaco","kike","spick","porchmonkey","camel jockey","towelhead","towel head","chink","gook","porch monkey","seu preto","nigga"];
 
@@ -285,7 +285,7 @@ break;
           if(API.getUser(fromID).permission < 2 || API.getUser(fromID).permission > 1){
             API.sendChat("comandos");
             setTimeout(function(){
-              API.sendChat("regras | temas | add | link | fb | define | songlink | download | votos | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
+              API.sendChat("regras | temas | autowoot | fb | songlink | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
             }, 650);
             setTimeout(function(){
               API.sendChat("test | meuid | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
@@ -328,11 +328,11 @@ break;
 
         case "regras":
           if(typeof command[1] == "undefined"){
-            API.sendChat(" Tempo máximo 6 minutos e 30 segundos. Não peça cargos. Respeitar os moderadores e os demais players da sala. Não coloque videos com cenas explícitas, pornografia e etc. Não divulgue links de outras salas.");
+            API.sendChat(" Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
           }else if(command[1].indexOf("@") > -1){
-            API.sendChat(command[1]+" Tempo máximo 6 minutos e 30 segundos. Não peça cargos. Respeitar os moderadores e os demais players da sala. Não coloque videos com cenas explícitas, pornografia e etc. Não divulgue links de outras salas.");
+            API.sendChat(command[1]+" Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
           }else{
-            API.sendChat(" Tempo máximo 6 minutos e 30 segundos. Não peça cargos. Respeitar os moderadores e os demais players da sala. Não coloque videos com cenas explícitas, pornografia e etc. Não divulgue links de outras salas.");
+            API.sendChat(" Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
           }
           if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
             Countrybot.misc.ready = false;
@@ -389,9 +389,9 @@ break;
           }
           break;
 
-        case "ajudasfa":
+        case "ajudaasdas":
           if(typeof command[1] == "undefined"){
-            API.sendChat("Bem-vindo a sala AMMBR, para ver os comandos digite: .comandos | R");
+            API.sendChat("Bem-vindo a sala AMMBR, respeite as regras e os temas, para ver as regras");
             setTimeout(function(){
               API.sendChat("Ask a mod if you're unsure about your song choice.");
             }, 650);
