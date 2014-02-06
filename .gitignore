@@ -87,7 +87,7 @@ Countrybot.admins =
 
 Countrybot.filters.swearWords = ["Filho da puta","viado","chupa meu pinto","Vai Tomar no cu", "Vai se foder", "puta","puto","cacete","idiota","motherfucker","seu merda","pau no cu"];
 
-Countrybot.filters.commandWords = ["!say","!songlink","!comandos","!bansong 1","!down","!autowoot","!entrar","!woot","!meh","!status","!tcf","!cf","!regras","!temas","!version","!test","!cancel","!temas","!source"];
+Countrybot.filters.commandWords = ["!say","!bansong 1","!down","!votos","!fb","!djinfo","!comandos","!autowoot","!meuid","!regras","!temas","!like","!define","!songlink","!download","!add","!skip","!unlock","!lock","!meh","!woot","!join","!leave","!lockskip","!cancel","!hf","!sf","!cf","!rf","!bf","!tsf","!tcf","!trf","!tbf","!thf","!version","!status","!segundos","!minutos"];
 
 Countrybot.filters.racistWords = ["nigger","seu macaco","kike","spick","porchmonkey","camel jockey","towelhead","towel head","chink","gook","porch monkey","seu preto","nigga"];
 
@@ -370,7 +370,7 @@ break;
         case "like":
         case "bonus":
           if(typeof command[1] == "undefined"){
-            API.sendChat("@"+ data.from +" gostou pra carolho da sua música @"+ API.getDJ().username +", continue assim!");
+            API.sendChat("@"+ data.from +" gostou muito da sua música @"+ API.getDJ().username +", continue assim! :sparkling_heart:");
           }
           break;
 
@@ -550,7 +550,7 @@ API.on(API.CHAT, function(data){
         case "meh":
           if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
             if(typeof command[1] === "undefined"){
-              API.sendChat("Meh!");
+              API.sendChat("Não gostei!");
               setTimeout(function(){
                 document.getElementById("meh").click()
               }, 650);
@@ -563,7 +563,7 @@ API.on(API.CHAT, function(data){
         case "woot":
           if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
             if(typeof command[1] === "undefined"){
-              API.sendChat("Woot!");
+              API.sendChat("Up, gostei!");
               setTimeout(function(){
                 document.getElementById("woot").click()
               }, 650);
