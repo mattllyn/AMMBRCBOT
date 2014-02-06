@@ -180,7 +180,7 @@ SoundUniverseBot.prototype = {
 		this.lang['en']['NOT_REGISTERED']			= '@%username% Você não é registrado. Use: !registrar';
 		this.lang['en']['REGISTER'] 				= '@%username% Você foi registrado com sucesso.';
 		this.lang['en']['USER_NOT_FOUND']			= '@%username% O usuario %target% não pode ser encontrado.';
-		this.lang['en']['USER_FAN']					= '@%username% :kiss:';
+		//this.lang['en']['USER_FAN']					= '@%username% :kiss:';
 
 		this.lang['en']['STAFF_REQUIRED']			= '@%username% Apenas administradores podem usar esse comando. (%staff%)';
 
