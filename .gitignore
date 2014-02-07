@@ -95,7 +95,7 @@ Countrybot.filters.beggerWords = ["fã?","fãs?","fan?","fans?","fa4fa","fan me"
 
 // Filtering Fun Commands below
 
-Countrybot.misc.tacos = ["Cigarro","Cigarro de maconha","Marlboro","nargs","Caximbo da paz"];
+Countrybot.misc.tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
 
 Countrybot.misc.cookie = ["um biscoito de chocolate","um bolinho de açúcar","um cookie de aveia passas","um brownie 'especial'","um cracker animal","um lanche Scooby","um muffin de mirtilo","um cupcake"] ;
 
@@ -239,13 +239,13 @@ API.on(API.CHAT, function(data){
       switch(command[0].toLowerCase()){
 
         case "votos":
-          if(API.getUser(fromID).permission < 2 || Countrybot.admins.indexOf(fromID) > -1){
+          {
             API.sendChat("Votos:  :+1: " + API.getRoomScore().positive + " | :purple_heart: " + API.getRoomScore().curates+" | :-1: " + API.getRoomScore().negative);
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
           break;
-
+/*
 case "clear":
 if(API.getUser(data.fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
 if(typeof command[1] === "undefined"){
@@ -253,18 +253,18 @@ API.moderateDeleteChat(chatID)
 API.sendChat("Apagando Chat");
 }
 }
-break;
+break; */
         case "facebook":
         case "fb":
-          if(API.getUser(fromID).permission < 2 || Countrybot.admins.indexOf(fromID) > -1){
-            API.sendChat(data.from +" Curta nosso facebook: http://migre.me/hG4pT | Acesse nosso blog: http://www.ammbr.com.br/");
+          {
+            API.sendChat(data.from +" :star2: Curta nosso facebook: http://migre.me/hG4pT | Acesse nosso blog: http://www.ammbr.com.br/");
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
           break;
 
         case "djinfo":
-          if(API.getUser(fromID).permission < 2 || Countrybot.admins.indexOf(fromID) > -1){
+          {
             var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
             API.sendChat("DJ atual: "+ API.getDJ().username +". Pontos: "+ total +" | Fans: "+ API.getDJ().fans +" | Curated: "+ API.getDJ().curatorPoints +".");
             Countrybot.misc.ready = false;
@@ -295,14 +295,14 @@ break;
           break;
 
         case "autowoot":
-          if(API.getUser(fromID).permission < 2 || Countrybot.admins.indexOf(fromID) > -1){
-            API.sendChat(data.from +" Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
+          {
+            API.sendChat(data.from +" :star2: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
           break;
         case "meuid":
-          if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
+          {
             API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
@@ -310,7 +310,7 @@ break;
           break;
 
         case "ping":
-          if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
+          {
             API.sendChat("@"+ data.from +" Pong!");
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
@@ -318,7 +318,7 @@ break;
           break;
 
         case "marco":
-          if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
+          {
             API.sendChat("@"+ data.from +" POLO!");
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
@@ -327,13 +327,7 @@ break;
 
         case "regras":
           if(typeof command[1] == "undefined"){
-            API.sendChat(" Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
-          }else if(command[1].indexOf("@") > -1){
-            API.sendChat(command[1]+" Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
-          }else{
-            API.sendChat(" Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+            API.sendChat(" :star2: Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
@@ -341,13 +335,12 @@ break;
 
         case "temas":
           if(typeof command[1] == "undefined"){
-            API.sendChat("Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
+            API.sendChat(" :star2: Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
           }else if(command[1].indexOf("@") > -1){
-            API.sendChat(command[1]+"Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
+            API.sendChat(command[1]+" :star2: Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
           }else{
-            API.sendChat("Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
+            API.sendChat(" :star2: Temas: Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
+
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
@@ -449,7 +442,7 @@ break;
           if(typeof command[1] == "undefined"){
             API.sendChat("@" + data.from + " Definiçao de que?!");
           }else if(command[1].toLowerCase().indexOf("xxx") === -1 && command[1].toLowerCase().indexOf("porn") === -1 && command[1].toLowerCase().indexOf("sex") === -1){
-            API.sendChat("@"+ data.from +" http://www.urbandictionary.com/define.php?term="+command[1]);
+            API.sendChat("@"+ data.from +" http://www.pt.urbandictionary.com/define.php?term="+command[1]);
           }else{
             API.sendChat("@"+ data.from +" Você é idiota?");
           }
@@ -1660,4 +1653,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat('Anime MM bot script loaded v'+ Countrybot.misc.version +' !')
+API.sendChat(':star2: Anime MM bot script loaded v'+ Countrybot.misc.version +' !')
