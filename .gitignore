@@ -264,7 +264,7 @@ break;
           break;
 
         case "djinfo":
-          if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
+          if(API.getUser(fromID).permission > 2 || Countrybot.admins.indexOf(fromID) > -1){
             var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
             API.sendChat("DJ atual: "+ API.getDJ().username +". Pontos: "+ total +" | Fans: "+ API.getDJ().fans +" | Curated: "+ API.getDJ().curatorPoints +".");
             Countrybot.misc.ready = false;
