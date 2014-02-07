@@ -370,7 +370,7 @@ break;
         case "like":
         case "bonus":
           if(typeof command[1] == "undefined"){
-            API.sendChat("@"+ data.from +" gostou muito da sua música @"+ API.getDJ().username +", continue assim! :sparkling_heart:");
+            API.sendChat("@"+ data.from +" gostou pra carolho da sua música @"+ API.getDJ().username +", continue assim! :star2: :star2:");
           }
           break;
 
