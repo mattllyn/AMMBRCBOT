@@ -1658,4 +1658,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat(':star2: Anime MM bot script loaded v'+ Countrybot.misc.version +' !')
+API.sendChat(':star2: Anime MM bot script loaded v'+ Countrybot.misc.version +' !') 
