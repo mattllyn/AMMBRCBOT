@@ -50,7 +50,7 @@ toSave.settings = Countrybot.settings;
 toSave.moderators = Countrybot.moderators;
 
 Countrybot.misc.version = "1.0.28";
-Countrybot.misc.origin = "This bot was created by RogieRog and Neon alone(edited by: Psyko-Mattz), and it is copyrighted!";
+Countrybot.misc.origin = "This bot was created by RogieRog and Neon alone, and it is copyrighted!";
 Countrybot.misc.changelog = "Adicionado uma verificação secundária do histórico";
 Countrybot.misc.ready = true;
 Countrybot.misc.lockSkipping = false;
@@ -272,22 +272,14 @@ break; */
           }
           break;
 
-        case "bot":
-          if(API.getUser(fromID).permission < 2 || API.getUser(fromID).permission > 1){
-            API.sendChat("You have something to say?? @"+ data.from);
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
         case "comandos":
           if(API.getUser(fromID).permission < 2 || API.getUser(fromID).permission > 1){
             API.sendChat("comandos");
             setTimeout(function(){
-              API.sendChat("regras | temas | autowoot | fb | songlink | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | legal | chato");
+              API.sendChat("regras | temas | autowoot | fb | songlink | djinfo | say | ping | marco | abraço | drink | cookie | drugs | punir | legal | chato");
             }, 650);
             setTimeout(function(){
-              API.sendChat("test | meuid | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
+              API.sendChat(" meuid | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
             }, 1000);
             Countrybot.misc.ready = false;
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
@@ -346,20 +338,6 @@ break; */
           }
           break;
 
-        case "whywoot":
-          if(typeof command[1] == "undefined"){
-            API.sendChat("Plug gives you 1 point for wooting the current song if you don't like the song i suggest you remain neutral");
-          }else if(command[1].indexOf("@") > -1){
-            API.sendChat(command[1]+" Plug gives you 1 point for wooting the current song if you don't like the song i suggest you remain neutral");
-          }else{
-            API.sendChat("Plug gives you 1 point for wooting the current song if you don't like the song i suggest you remain neutral");
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
         case "legal":
           if(typeof command[1] == "undefined"){
             API.sendChat("@"+ data.from +" gostou pra carolho do seu video @"+ API.getDJ().username +", continue assim! :star2: :revolving_hearts:");
@@ -369,63 +347,6 @@ break; */
         case "chato":
           if(typeof command[1] == "undefined"){
             API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima!  :-1:  :broken_heart: ");
-          }
-          break;
-
-        case "whymeh":
-          if(typeof command[1] == "undefined"){
-            API.sendChat("Reserve Mehs for songs that are a) extremely overplayed b) off genre c) absolutely god awful or d) troll songs. ");
-          }else if(command[1].indexOf("@") > -1){
-            API.sendChat(command[1]+" Reserve Mehs for songs that are a) extremely overplayed b) off genre c) absolutely god awful or d) troll songs. ");
-          }else{
-            API.sendChat("Reserve Mehs for songs that are a) extremely overplayed b) off genre c) absolutely god awful or d) troll songs. ");
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "ajudaasdas":
-          if(typeof command[1] == "undefined"){
-            API.sendChat("Bem-vindo a sala AMMBR, respeite as regras e os temas, para ver as regras");
-            setTimeout(function(){
-              API.sendChat("Ask a mod if you're unsure about your song choice.");
-            }, 650);
-          }else if(command[1].indexOf("@") > -1){
-            API.sendChat(command[1]+ "Welcome to the The Country Club! Create a playlist and populate it with songs from either YouTube or Soundcloud. Click the 'Join Waitlist' button and wait your turn to play music.");
-            setTimeout(function(){
-              API.sendChat("Ask a mod if you're unsure about your song choice.");
-            }, 650);
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "wiki":
-          if(typeof command[1] == "undefined"){
-            API.sendChat("@"+data.from+" https://en.wikipedia.org/wiki/Special:Random");
-          }else{
-            var r = data.message.substring(6).replace(g, "_");
-            $.getJSON("http://jsonp.appspot.com/?callback=?&url=" + escape("http://en.wikipedia.org/w/api.php?action=query&prop=links&format=json&titles="+r.replace(g,"_")),
-                function(wikiData){
-                  if (!wikiData || !wikiData.query || !wikiData.query.pages);
-                  return API.sendChat("@"+data.from+" http://en.wikipedia.org/wiki/"+r+" (NOT GUARANTEED TO BE CORRECT)");
-                  if (wikiData.query.pages[-1]) {
-                    API.sendChat("@"+data.from+" article not found");
-                  }else{
-                    for (var i in wikiData.query.pages)
-              // note: the #... is just to make the url look nicer
-              return API.sendChat("@"+data.from+" https://en.wikipedia.org/wiki/?curid="+i+"#"+escape(wikiData.query.pages[i].title) );
-                  }
-                }
-                );
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
           break;
 
@@ -504,14 +425,14 @@ API.on(API.CHAT, function(data){
       switch(command[0].toLowerCase()){
 
         case "add":
-            if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
+            {
                 $(".icon-curate").click();
                 $($(".curate").children(".menu").children().children()[0]).mousedown();
               }
               break;
 
         case "say":
-          if(API.getUser(fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
+          {
             if(typeof command[1] === "undefined"){
             }else{
               API.sendChat(command[1]);
@@ -604,22 +525,6 @@ API.on(API.CHAT, function(data){
             }, 650);
           }else{
             API.sendChat("Este comando pode ser usado apenas por administradores!");
-          }
-          break;
-
-        case "test":
-          if(Countrybot.admins.indexOf(fromID) > -1){
-            API.sendChat("@"+ data.from +" Test Successful");
-          }else{
-            API.sendChat("Este comando pode ser usado apenas por administradores!");
-          }
-          break;
-
-        case "source":
-          if(API.getUser(data.fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
-            API.sendChat("Howdy Staff "+ data.from +"! My source is located here: http://goo.gl/xarlwt");
-          }else{
-            API.sendChat("This command requires bouncer only!");
           }
           break;
 
@@ -948,146 +853,6 @@ API.on(API.CHAT, function(data){
           }
           break;
 
-
-                   case "roll":
-                        if(typeof command[1] == "undefined"){
-                            var crowd = API.getUsers();
-                            var randomUser = Math.floor(Math.random() * crowd.length);
-                            var randomRoll = Math.floor(Math.random() * Countrybot.misc.roll.length);
-                            var randomSentence = Math.floor(Math.random() * 2);
-                            switch(randomSentence){
-                                case 0:
-                                    API.sendChat("@"+ data.from +" You rolled a "+ Countrybot.misc.roll2[randomRoll]);
-                                    setTimeout(function(){
-                                    document.getElementById("woot").click()
-                                    }, 650);
-                                    break;
-                                case 1:
-                                    API.sendChat("@" + data.from + ", "+ Countrybot.misc.roll[randomRoll]);
-                                    break;
-                            }
-                        }else{
-                            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-                            var randomRoll = Math.floor(Math.random() * Countrybot.misc.roll.length);
-                            var randomSentence = Math.floor(Math.random() * 2);
-                            switch(randomSentence){
-                                case 0:
-                                    API.sendChat("@"+ data.from +" You rolled a "+ Countrybot.misc.roll2[randomRoll]);
-                                    setTimeout(function(){
-                                    document.getElementById("woot").click()
-                                    }, 650);
-                                    break;
-                                case 1:
-                                    API.sendChat("@" + data.from + ", "+ Countrybot.misc.roll[randomRoll]);
-                                    break;
-                           }
-                        }
-                        if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-                            Countrybot.misc.ready = false;
-                            setTimeout(function(){ boombot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-                        }
-                        break;
-
-
-        case "fortune":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomFortune = Math.floor(Math.random() * Countrybot.misc.fortune.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ","+ Countrybot.misc.fortune[randomFortune]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ","+ Countrybot.misc.fortune[randomFortune]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomFortune = Math.floor(Math.random() * Countrybot.misc.fortune.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ","+ Countrybot.misc.fortune[randomFortune]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ","+ Countrybot.misc.fortune[randomFortune]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "8ball":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomBall = Math.floor(Math.random() * Countrybot.misc.ball.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.ball[randomBall]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.ball[randomBall]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomBall = Math.floor(Math.random() * Countrybot.misc.ball.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.ball[randomBall]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.ball[randomBall]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "flipcoin":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomHt = Math.floor(Math.random() * Countrybot.misc.ht.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.ht[randomHt]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.ht[randomHt]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomHt = Math.floor(Math.random() * Countrybot.misc.ht.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.ht[randomHt]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.ht[randomHt]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
       case "cookie":
       case "reward":
           if(typeof command[1] == "@"){
@@ -1279,254 +1044,6 @@ case "drugs":
           }
           break;
 
-        case "dogfact":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomDogfact = Math.floor(Math.random() * Countrybot.misc.dogfact.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.dogfact[randomDogfact]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.dogfact[randomDogfact]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomDogfact = Math.floor(Math.random() * Countrybot.misc.dogfact.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.dogfact[randomdogfact]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.dogfact[randomDogfact]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) == -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "catfact":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomCatfact = Math.floor(Math.random() * Countrybot.misc.catfact.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.catfact[randomCatfact]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.catfact[randomCatfact]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomCatfact = Math.floor(Math.random() * Countrybot.misc.catfact.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.catfact[randomCatfact]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.catfact[randomCatfact]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "mullet":
-          API.sendChat("Do you like my Tennessee Waterfall? It's business in the front, Party in the back!");
-          break;
-
-        case "dougie":
-          API.sendChat("Ain't a damn one know how to do the dougie. No, not in Kentucky!");
-          break;
-
-        case "diffie":
-          API.sendChat("Joe, Joe, Joe Difffffffie");
-          break;
-
-        case "jive":
-          API.sendChat("hello ladies");
-          break;
-
-        case "tswizzle":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomTswizzle = Math.floor(Math.random() * Countrybot.misc.tswizzle.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.tswizzle[randomTswizzle]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.tswizzle[randomTswizzle]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomTswizzle = Math.floor(Math.random() * Countrybot.misc.tswizzle.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.tswizzle[randomTswizzle]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.tswizzle[randomTswizzle]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "rog":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomRog = Math.floor(Math.random() * Countrybot.misc.rog.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.rog[randomRog]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.rog[randomRog]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomRog = Math.floor(Math.random() * Countrybot.misc.rog.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.rog[randomRog]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.rog[randomRog]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "jovi":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomJovi = Math.floor(Math.random() * Countrybot.misc.jovi.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.jovi[randomJovi]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.jovi[randomJovi]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomJovi = Math.floor(Math.random() * Countrybot.misc.jovi.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat(Countrybot.misc.jovi[randomJovi]);
-                break;
-              case 1:
-                API.sendChat(Countrybot.misc.jovi[randomJovi]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "banjo":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomBanjo = Math.floor(Math.random() * Countrybot.misc.banjo.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.banjo[randomBanjo]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.banjo[randomBanjo]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomBanjo = Math.floor(Math.random() * Countrybot.misc.banjo.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.banjo[randomBanjo]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.banjo[randomBanjo]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-        case "redneck":
-          if(typeof command[1] == "undefined"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomRedneck = Math.floor(Math.random() * Countrybot.misc.redneck.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.redneck[randomRedneck]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.redneck[randomRedneck]);
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomRedneck = Math.floor(Math.random() * Countrybot.misc.redneck.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.redneck[randomRedneck]);
-                break;
-              case 1:
-                API.sendChat("@" + data.from + ", "+ Countrybot.misc.redneck[randomRedneck]);
-                break;
-            }
-          }
-          if(Countrybot.admins.indexOf(fromID) > -1 || API.getUser(fromID).permission < 2){
-            Countrybot.misc.ready = false;
-            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
-          }
-          break;
-
-
 
 
       }
@@ -1658,4 +1175,4 @@ setTimeout(function(){
   });
 }, 3000);
 
-API.sendChat(':star2: Anime MM bot script loaded v'+ Countrybot.misc.version +' !') 
+API.sendChat(':star2: Anime MM bot script loaded v'+ Countrybot.misc.version +' !')
