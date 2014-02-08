@@ -87,7 +87,7 @@ Countrybot.admins =
 
 Countrybot.filters.swearWords = ["Filho da puta","viado","chupa meu pinto","Vai Tomar no cu", "Vai se foder", "puta","puto","cacete","idiota","motherfucker","seu merda","pau no cu"];
 
-Countrybot.filters.commandWords = ["!say","!bansong 1","!down","!votos","!fb","!djinfo","!comandos","!autowoot","!meuid","!regras","!temas","!like","!define","!songlink","!download","!add","!skip","!unlock","!lock","!meh","!woot","!join","!leave","!lockskip","!cancel","!hf","!sf","!cf","!rf","!bf","!tsf","!tcf","!trf","!tbf","!thf","!version","!status","!segundos","!minutos"];
+Countrybot.filters.commandWords = ["!say","!bansong 1","!down","!votos","!fb","!djinfo","!comandos","!autowoot","!meuid","!regras","!temas","!legal","!chato","!define","!songlink","!download","!add","!skip","!unlock","!lock","!meh","!woot","!join","!leave","!lockskip","!cancel","!hf","!sf","!cf","!rf","!bf","!tsf","!tcf","!trf","!tbf","!thf","!version","!status","!segundos","!minutos"];
 
 Countrybot.filters.racistWords = ["nigger","seu macaco","kike","spick","porchmonkey","camel jockey","towelhead","towel head","chink","gook","porch monkey","seu preto","nigga"];
 
@@ -97,7 +97,7 @@ Countrybot.filters.beggerWords = ["fã?","fãs?","fan?","fans?","fa4fa","fan me"
 
 Countrybot.misc.tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
 
-Countrybot.misc.cookie = ["um biscoito de chocolate","um bolinho de açúcar","um cookie de aveia passas","um brownie 'especial'","um cracker animal","um lanche Scooby","um muffin de mirtilo","um cupcake"] ;
+Countrybot.misc.cookie = ["um biscoito de chocolate","um cupcake","um cookie de aveia e passas","um brownie 'especial'","um cracker animal","um lanche Scooby","um muffin de mirtilo"] ;
 
 Countrybot.misc.drink = ["Caipirinha", "Wisk", "Tequila", "Champagne", "Martini", "Capeta"];
 
@@ -208,18 +208,18 @@ botMethods.djAdvanceEvent = function(data){
       //API.sendChat("This song is in the history! You should make me a mod so that I could skip it!");
     }else if(API.getUser().permission > 1){
       //API.sendChat("@" + API.getDJ().username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
-      //API.moderateForceSkip();
+      API.moderateForceSkip();
     }else if(song.duration > Countrybot.settings.maxLength * 60){
       Countrybot.pubVars.skipOnExceed = setTimeout( function(){
         //API.sendChat("@"+ API.getDJ().username +" You have now played for as long as this room allows, time to let someone else have the booth!");
-        //API.moderateForceSkip();
+        API.moderateForceSkip();
       }, Countrybot.settings.maxLength * 60000);
       API.sendChat("@"+ API.getDJ().username +" Seu video será pulado " + Countrybot.settings.maxLength + " ultrapassou o tempo limite de cada video.");
     }else{
       setTimeout(function(){
         if(botMethods.checkHistory() > 0 && Countrybot.settings.historyFilter){
           //API.sendChat("@" + API.getDJ().username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
-          //API.moderateForceSkip();
+          API.moderateForceSkip();
         };
       }, 1500);
     }
@@ -284,7 +284,7 @@ break; */
           if(API.getUser(fromID).permission < 2 || API.getUser(fromID).permission > 1){
             API.sendChat("comandos");
             setTimeout(function(){
-              API.sendChat("regras | temas | autowoot | fb | songlink | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | like");
+              API.sendChat("regras | temas | autowoot | fb | songlink | djinfo | ping | marco | abraço | drink | cookie | drugs | punir | legal | chato");
             }, 650);
             setTimeout(function(){
               API.sendChat("test | meuid | woot | meh | skip | tcf | trf | thf | tsf | tbf | version | lock | unlock | lockskip | save | changelog | cancel | source | status | segundos | minutos");
@@ -360,10 +360,15 @@ break; */
           }
           break;
 
-        case "like":
-        case "bonus":
+        case "legal":
           if(typeof command[1] == "undefined"){
-            API.sendChat("@"+ data.from +" gostou pra carolho da sua música @"+ API.getDJ().username +", continue assim! :star2: :star2:");
+            API.sendChat("@"+ data.from +" gostou pra carolho do seu video @"+ API.getDJ().username +", continue assim! :star2: :revolving_hearts:");
+          }
+          break;
+
+        case "chato":
+          if(typeof command[1] == "undefined"){
+            API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima!  :-1:  :broken_heart: ");
           }
           break;
 
@@ -888,16 +893,16 @@ API.on(API.CHAT, function(data){
             var randomSentence = Math.floor(Math.random() * 6);
             switch(randomSentence){
               case 0:
-                API.sendChat("/me esfrega uma lixa no escroto de @"+command[1]+" ");
+                API.sendChat("/me esfrega uma lixa no rosto de @"+command[1]+" ");
                 break;
               case 1:
-                API.sendChat("/me penetra uma caneta em @"+command[1]+" ");
+                API.sendChat("/me penetra uma caneta no ouvido de @"+command[1]+" ");
                 break;
               case 2:
                 API.sendChat("/me cutuca os olhos de @"+command[1]+" ");
                 break;
               case 3:
-                API.sendChat("/me enfia um palito de dente na unha de @"+command[1]+" ");
+                API.sendChat("/me da um tapa na bunda de @"+command[1]+" ");
                 break;
               case 4:
                 API.sendChat("/me aperta os mamilos de @"+command[1]+" ");
@@ -914,16 +919,16 @@ API.on(API.CHAT, function(data){
             var randomSentence = Math.floor(Math.random() * 6);
             switch(randomSentence){
               case 0:
-                API.sendChat("/me esfrega uma lixa no escroto de @"+command[1]+" ");
+                API.sendChat("/me esfrega uma lixa no rosto de @"+command[1]+" ");
                 break;
               case 1:
-                API.sendChat("/me penetra uma caneta em @"+command[1]+" ");
+                API.sendChat("/me penetra uma caneta no ouvido de @"+command[1]+" ");
                 break;
               case 2:
                 API.sendChat("/me cutuca os olhos de @"+command[1]+" ");
                 break;
               case 3:
-                API.sendChat("/me enfia um palito de dente na unha de @"+command[1]+" ");
+                API.sendChat("/me da um tapa na bunda de @"+command[1]+" ");
                 break;
               case 4:
                 API.sendChat("/me aperta os mamilos de @"+command[1]+" ");
