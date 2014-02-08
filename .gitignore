@@ -194,6 +194,39 @@ botMethods.cleanString = function(string){
   return string.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&#34;/g, "\"").replace(/&#59;/g, ";").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
 };
 
+
+botMethods.djAdvanceEvent = function(data){
+    clearTimeout(Countrybot.pubVars.skipOnExceed);
+    if(Countrybot.misc.lockSkipping){
+        API.moderateAddDJ(Countrybot.misc.lockSkipped);
+        Countrybot.misc.lockSkipped = "0";
+        Countrybot.misc.lockSkipping = false;
+        setTimeout(function(){ API.moderateRoomProps(false, true); }, 500);
+    }
+    var song = API.getMedia();
+    if(botMethods.checkHistory() > 0 && Countrybot.settings.historyFilter){
+        if(API.getUser().permission < 2){
+            API.sendChat("This song is in the history! You should make me a mod so that I could skip it!");
+        }else if(API.getUser().permission > 1){
+            API.sendChat("@" + API.getDJs()[0].username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
+            botMethods.skip()
+        }else if(song.duration > Countrybot.settings.maxLength * 60){
+            Countrybot.pubVars.skipOnExceed = setTimeout( function(){
+                API.sendChat("@"+API.getDJs()[0].username+" You have now played for as long as this room allows, time to let someone else have the booth!");
+                botMethods.skip();
+            }, Countrybot.settings.maxLength * 60000);
+            //API.sendChat("@"+API.getDJs()[0].username+" This song will be skipped " + Countrybot.settings.maxLength + " minutes from now because it exceeds the max song length.");
+        }else{
+            setTimeout(function(){
+                if(botMethods.checkHistory() > 0 && Countrybot.settings.historyFilter){
+                    API.sendChat("@" + API.getDJs()[0].username + ", playing songs that are in the history isn't allowed, please check next time! Skipping..");
+                    botMethods.skip()
+                };
+            }, 1500);
+        }
+    }
+};
+/*
 botMethods.djAdvanceEvent = function(data){
   clearTimeout(Countrybot.pubVars.skipOnExceed);
   if(Countrybot.misc.lockSkipping){
@@ -225,7 +258,7 @@ botMethods.djAdvanceEvent = function(data){
     }
   }
 };
-
+*/
 API.on(API.CHAT, function(data){
   if(data.message.indexOf('!') === 0){
     var msg = data.message, from = data.from, fromID = data.fromID;
@@ -245,15 +278,18 @@ API.on(API.CHAT, function(data){
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
           break;
-/*
-case "clear":
-if(API.getUser(data.fromID).permission > 1 || Countrybot.admins.indexOf(fromID) > -1){
-if(typeof command[1] === "undefined"){
-API.moderateDeleteChat(chatID)
-API.sendChat("Apagando Chat");
-}
-}
-break; */
+          
+          case 'clear':
+             if( API.getUser(data.fromID).permission > 1){
+             var arg = $('#chat-messages').children();
+			 for(var i=0;i<arg.length;i++) API.moderateDeleteChat(arg[i].className.substr(arg[i].className.indexOf('cid-')+4,14));
+             deleteAll = true;
+	         setTimeout(function(){
+             API.sendChat('Chat limpo!');
+						}, 950);
+                        }
+          break;
+
         case "facebook":
         case "fb":
           {
