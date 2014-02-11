@@ -297,7 +297,13 @@ API.on(API.CHAT, function(data){
             setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
           }
           break;
-
+        case "adblock":
+          {
+            API.sendChat(data.from +" :star2: Para remover as propagandas dos videos use AdBlock: http://www.adblockplus.org/");
+            Countrybot.misc.ready = false;
+            setTimeout(function(){ Countrybot.misc.ready = true; }, Countrybot.settings.cooldown * 1000);
+          }
+          break;
         case "djinfo":
           {
             var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
