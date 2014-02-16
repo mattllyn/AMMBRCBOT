@@ -95,7 +95,7 @@ function onChat(data) {
 				if (message.indexOf('!meuid') == 0) {
 				API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
 				}
-				if (message.indexOf('!clear') == 0)
+				if (message.indexOf('!limparchat') == 0)
 				if(API.getUser(data.fromID).permission > 1 || Aadmins.indexOf(fromID) > -1){
                 var arg = $('#chat-messages').children();
 			    for(var i=0;i<arg.length;i++) API.moderateDeleteChat(arg[i].className.substr(arg[i].className.indexOf('cid-')+4,14));
