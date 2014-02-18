@@ -112,7 +112,6 @@ function onChat(data) {
                 if (message.indexOf('!comandos') == 0) API.sendChat(":sparkles: !temas !regras !musica !fb !adblock !autowoot !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie");
                 if (message.indexOf('!temas') == 0) API.sendChat(":sparkles: Temas > Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
                 if (message.indexOf('!regras') == 0) API.sendChat(":sparkles: Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
-                if (message.indexOf('!musica') == 0) API.sendChat(":sparkles: " + song);
                 if (message.indexOf('!fb') == 0) API.sendChat(":sparkles: Curta nosso facebook: http://migre.me/hG4pT | Acesse nosso blog: http://www.ammbr.com.br/");
                 if (message.indexOf('!adblock') == 0) API.sendChat(":sparkles: Para remover as propagandas dos videos use AdBlock: http://www.adblockplus.org/");
                 if (message.indexOf('!autowoot') == 0) API.sendChat(":sparkles: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
@@ -292,7 +291,16 @@ function onChat(data) {
             }
           }
           break;
-          
+          case "musica":
+           if(API.getMedia().format == 1){
+           API.sendChat("@" + data.from + " " + "http://youtu.be/" + API.getMedia().cid);
+           }else{
+           var id = API.getMedia().cid;
+           SC.get('/tracks', { ids: id,}, function(tracks) {
+           API.sendChat("@"+data.from+" "+tracks[0].permalink_url);
+           });
+           }
+          break;
       }
   }
 }
