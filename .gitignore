@@ -67,31 +67,34 @@ abraco = ["agarrou a bunda de","deu um abraço de urso em","deu um abraço gosto
 punirr = ["esfrega uma lixa no rosto de","penetra uma caneta no ouvido de","cutuca os olhos de","da uma mordida em","aperta os mamilos de","cospe em"];
 Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
 
+    
 //Auto-Chat
 API.on(API.CHAT,onChat);
 API.sendChat(":white_check_mark: AMMBR Bot ligado. :white_check_mark:");
 function onChat(data) {
 var message = data.message.toLowerCase();
+
 //Admins Commands
-if (message.indexOf("!travar") == 0){
-API.hasPermission(id, API.ROLE.BOUNCER)
+// Permissions > 1 = Bouncer, 2 = Manager, 3 = Co-Host
+if (message.indexOf("!travar") == 0)
+if (API.getUser(data.fromID).permission > 1){
 API.moderateLockWaitList(true);
 }
-if (message.indexOf("!destravar") == 0){
-API.hasPermission(id, API.ROLE.BOUNCER)
+if (message.indexOf("!destravar") == 0)
+if (API.getUser(data.fromID).permission > 1){
 API.moderateLockWaitList(false);
 }
-if (message.indexOf("!pular") == 0){
-API.hasPermission(id, API.ROLE.BOUNCER)
+if (message.indexOf("!pular") == 0)
+if (API.getUser(data.fromID).permission > 1){
 API.moderateForceSkip();
 }
-if (message.indexOf("!desligar") == 0){
-API.hasPermission(id, API.ROLE.COHOST)
+if (message.indexOf("!desligar") == 0)
+if (API.getUser(data.fromID).permission > 3){
 API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
 API.off(API.CHAT,onChat);
 }
-if (message.indexOf("!relogar") == 0){
-API.hasPermission(id, API.ROLE.COHOST)
+if (message.indexOf("!relogar") == 0)
+if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
 API.sendChat(" @" + data.from + " relogando bot...");
 API.off(API.CHAT, onChat);
@@ -99,15 +102,15 @@ API.off(API.CHAT,onChat);
 setTimeout(function () {$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/.gitignore");
 }, 1000);
 }
-if (message.indexOf("!limparchat") == 0){
-API.hasPermission(id, API.ROLE.MANAGER)
+if (message.indexOf("!limparchat") == 0)
+if (API.getUser(data.fromID).permission > 2){
 var arg = $("#chat-messages").children();
 for(var i=0;i<arg.length;i++) API.moderateDeleteChat(arg[i].className.substr(arg[i].className.indexOf('cid-')+4,14));
 deleteAll = true;
 setTimeout(function(){
 }, 950);
 }
-                
+
 //User Commands
 if (message.indexOf("!djinfo") == 0) {
 var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
@@ -134,7 +137,7 @@ if (message.indexOf("!autowoot") == 0) API.sendChat(":star2: Tutorial Auto-woot 
 //Retirado de outro Bot -q
 if(data.message.indexOf('!') === 0){
 var msg = data.message, from = data.from, fromID = data.fromID;
-var command = msg.substring(1).split(' ');
+var command = msg.substring(1).split(' ')
 if(typeof command[2] != "undefined"){
 for(var i = 2; i<command.length; i++){
 command[1] = command[1] + ' ' + command[i];
