@@ -48,8 +48,17 @@ function wootSong() {
 
 startWooting();
 
-					 //Matt
-Aadmins = ["515a206a877b9272821f831e"];
+API.on(API.DJ_ADVANCE,function(update){
+var hist = API.getHistory();
+var autoSkip;
+for (var i in hist) {
+if (hist[i].media.id == update.media.id) {
+API.sendChat(" @"+ API.getDJ().username +" Esse video já foi tocado! Pulando...");
+API.moderateForceSkip();
+break;
+}
+}
+});
 
 tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
@@ -61,246 +70,250 @@ Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.l
 
 //Auto-Chat
 API.on(API.CHAT,onChat);
-API.sendChat(':white_check_mark: AMMBR Bot ligado. :white_check_mark:');
+API.sendChat(":white_check_mark: AMMBR Bot ligado. :white_check_mark:");
 function onChat(data) {
-                var message = data.message.toLowerCase();
-                if (message.indexOf('!travar') == 0)
-                if(API.getUser(data.fromID).permission > 1 || Aadmins.indexOf(fromID) > -1){
-				API.moderateLockWaitList(true);
-				}
-                if (message.indexOf('!destravar') == 0)
-                if(API.getUser(data.fromID).permission > 1 || Aadmins.indexOf(fromID) > -1){
-				API.moderateLockWaitList(false);
-				}
-                if (message.indexOf('!pular') == 0)
-                if(API.getUser(data.fromID).permission > 1 || Aadmins.indexOf(fromID) > -1){
-				API.moderateForceSkip();
-				}
-                if (message.indexOf('!sempulo') == 0)
-                        if(API.getUser(data.fromID).permission > 1 || Aadmins.indexOf(fromID) > -1){
-                        API.moderateRoomProps(true,true);
-                        setTimeout(function(){API.moderateForceSkip();},1500);
-                        setTimeout(function(){API.moderateRoomProps(false,true);},4000);
-                }
-                if (message.indexOf('!desligar') == 0)
-                if(API.getUser(data.fromID).permission > 1 || Aadmins.indexOf(fromID) > -1){
-                //API.moderateRoomProps(false,true);
-                        API.sendChat(':ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:');
-                        API.off(API.CHAT,onChat);
-                }
-                if (message.indexOf('!djinfo') == 0) {
-                var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
-                API.sendChat("DJ atual: "+ API.getDJ().username +". Pontos: "+ total +" | Fans: "+ API.getDJ().fans +" | Curated: "+ API.getDJ().curatorPoints +".");
-				}
-				if (message.indexOf('!meuid') == 0) {
-				API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
-				}
-				if (message.indexOf('!limparchat') == 0)
-				if(API.getUser(data.fromID).permission > 1 || Aadmins.indexOf(fromID) > -1){
-                var arg = $('#chat-messages').children();
-			    for(var i=0;i<arg.length;i++) API.moderateDeleteChat(arg[i].className.substr(arg[i].className.indexOf('cid-')+4,14));
-                deleteAll = true;
-	            setTimeout(function(){
-                }, 950);
-                }
-                if (message.indexOf('!legal') == 0) {
-                API.sendChat("@"+ data.from +" gostou pra carolho do seu video @"+ API.getDJ().username +", continue assim! :star2: :revolving_hearts:");
-                }
-                if (message.indexOf('!chato') == 0) {
-                API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima! :-1: :broken_heart: ");
-                }
-                if (message.indexOf('!comandos') == 0) API.sendChat(":sparkles: !temas !regras !musica !fb !adblock !autowoot !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie");
-                if (message.indexOf('!temas') == 0) API.sendChat(":sparkles: Temas > Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
-                if (message.indexOf('!regras') == 0) API.sendChat(":sparkles: Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
-                if (message.indexOf('!fb') == 0) API.sendChat(":sparkles: Curta nosso facebook: http://migre.me/hG4pT | Acesse nosso blog: http://www.ammbr.com.br/");
-                if (message.indexOf('!adblock') == 0) API.sendChat(":sparkles: Para remover as propagandas dos videos use AdBlock: http://www.adblockplus.org/");
-                if (message.indexOf('!autowoot') == 0) API.sendChat(":sparkles: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
-                //if (message.indexOf('! ') == 0) API.sendChat(" ");
+var message = data.message.toLowerCase();
+//Admins Commands
+if (message.indexOf("!travar") == 0){
+API.hasPermission(id, API.ROLE.BOUNCER)
+API.moderateLockWaitList(true);
+}
+if (message.indexOf("!destravar") == 0){
+API.hasPermission(id, API.ROLE.BOUNCER)
+API.moderateLockWaitList(false);
+}
+if (message.indexOf("!pular") == 0){
+API.hasPermission(id, API.ROLE.BOUNCER)
+API.moderateForceSkip();
+}
+if (message.indexOf("!desligar") == 0){
+API.hasPermission(id, API.ROLE.COHOST)
+API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
+API.off(API.CHAT,onChat);
+}
+if (message.indexOf("!relogar") == 0){
+API.hasPermission(id, API.ROLE.COHOST)
+API.chatLog("Relogando bot...");
+API.sendChat(" @" + data.from + " relogando bot...");
+API.off(API.CHAT, onChat);
+API.off(API.CHAT,onChat);
+setTimeout(function () {$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/.gitignore");
+}, 1000);
+}
+if (message.indexOf("!limparchat") == 0){
+API.hasPermission(id, API.ROLE.MANAGER)
+var arg = $("#chat-messages").children();
+for(var i=0;i<arg.length;i++) API.moderateDeleteChat(arg[i].className.substr(arg[i].className.indexOf('cid-')+4,14));
+deleteAll = true;
+setTimeout(function(){
+}, 950);
+}
+                
+//User Commands
+if (message.indexOf("!djinfo") == 0) {
+var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
+API.sendChat("DJ atual: "+ API.getDJ().username +". Pontos: "+ total +" | Fans: "+ API.getDJ().fans +" | Curated: "+ API.getDJ().curatorPoints +".");
+}
+if (message.indexOf("!meuid") == 0) {
+API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
+}
+if (message.indexOf("!legal") == 0) {
+API.sendChat("@"+ data.from +" gostou pra carolho do seu video @"+ API.getDJ().username +", continue assim! :star2: :revolving_hearts:");
+}
+if (message.indexOf("!chato") == 0) {
+API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima! :-1: :broken_heart: ");
+}
+if (message.indexOf("!comandos") == 0) API.sendChat(":star2: !temas !regras !musica !fb !adblock !autowoot !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie");
+if (message.indexOf("!temas") == 0) API.sendChat(":star2: Temas > Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
+if (message.indexOf("!regras") == 0) API.sendChat(":star2: Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
+if (message.indexOf("!fb") == 0) API.sendChat(":star2: Curta nosso facebook: http://migre.me/hG4pT | Acesse nosso blog: http://www.ammbr.com.br/");
+if (message.indexOf("!adblock") == 0) API.sendChat(":star2: Para remover as propagandas dos videos use AdBlock: http://www.adblockplus.org/");
+if (message.indexOf("!autowoot") == 0) API.sendChat(":star2: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
+//if (message.indexOf("! ") == 0) API.sendChat(" ");
     
 
+//Retirado de outro Bot -q
+if(data.message.indexOf('!') === 0){
+var msg = data.message, from = data.from, fromID = data.fromID;
+var command = msg.substring(1).split(' ');
+if(typeof command[2] != "undefined"){
+for(var i = 2; i<command.length; i++){
+command[1] = command[1] + ' ' + command[i];
+}
+}
+switch(command[0].toLowerCase()){
 
-//API.on(API.CHAT, function(data){
-  if(data.message.indexOf('!') === 0){
-    var msg = data.message, from = data.from, fromID = data.fromID;
-    var command = msg.substring(1).split(' ');
-    if(typeof command[2] != "undefined"){
-      for(var i = 2; i<command.length; i++){
-        command[1] = command[1] + ' ' + command[i];
-		}
-    }
-      switch(command[0].toLowerCase()){
+case "punir":
+if(typeof command[1] == "@"){
+var crowd = API.getUsers();
+var randomUser = Math.floor(Math.random() * crowd.length);
+var randomPunirr = Math.floor(Math.random() * punirr.length);
+var randomSentence = Math.floor(Math.random() * 1);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+punirr[randomPunirr]+" @"+command[1]+" ");
+break;
+}
+}else{
+if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
+var randomPunirr = Math.floor(Math.random() * punirr.length);
+var randomSentence = Math.floor(Math.random() * 1);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+punirr[randomPunirr]+" @"+command[1]+" ");
+break;
+}
 
-        case "punir":
-          if(typeof command[1] == "@"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomPunirr = Math.floor(Math.random() * punirr.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@"+data.from+" "+punirr[randomPunirr]+" @"+command[1]+" ");
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomPunirr = Math.floor(Math.random() * punirr.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@"+data.from+" "+punirr[randomPunirr]+" @"+command[1]+" ");
-                break;
-            }
-
-          }
-          break;
+}
+break;
           
-      case "cookie":
-          if(typeof command[1] == "@"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomCookie = Math.floor(Math.random() * cookie.length);
-            var randomSentence = Math.floor(Math.random() * 3);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@"+command[1]+" Quer um cookie?");
-                setTimeout(function(){
-                  API.sendChat("Deu cookies para @"+command[1]+", Divirta-se! :trollface:");
-                }, 650);
-                break;
-              case 1:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-                break;
-              case 2:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-                break;
-              case 3:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomCookie = Math.floor(Math.random() * cookie.length);
-            var randomSentence = Math.floor(Math.random() * 3);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@"+crowd[randomUser].username+" Quer um cookie?");
-                setTimeout(function(){
-                  API.sendChat("Deu cookies para @"+command[1]+", Divirta-se! :trollface:");
-                }, 650);
-                break;
-              case 1:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-                break;
-              case 2:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-                break;
-              case 3:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-                break;
-                }}
-                break;
+case "cookie":
+if(typeof command[1] == "@"){
+var crowd = API.getUsers();
+var randomUser = Math.floor(Math.random() * crowd.length);
+var randomCookie = Math.floor(Math.random() * cookie.length);
+var randomSentence = Math.floor(Math.random() * 3);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+command[1]+" Quer um cookie?");
+setTimeout(function(){
+API.sendChat("Deu cookies para @"+command[1]+", Divirta-se! :trollface:");
+}, 650);
+break;
+case 1:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
+break;
+case 2:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
+break;
+case 3:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
+break;
+}
+}else{
+if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
+var randomCookie = Math.floor(Math.random() * cookie.length);
+var randomSentence = Math.floor(Math.random() * 3);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+crowd[randomUser].username+" Quer um cookie?");
+setTimeout(function(){
+API.sendChat("Deu cookies para @"+command[1]+", Divirta-se! :trollface:");
+}, 650);
+break;
+case 1:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
+break;
+case 2:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
+break;
+case 3:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
+break;
+}}
+break;
 
-        case "drink":
-          if(typeof command[1] == "@"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomDrink = Math.floor(Math.random() * drink.length);
-            var randomSentence = Math.floor(Math.random() * 2);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink]+ ". Divirta-se!");
-                break;
-              case 1:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink] + ". Divirta-se!");
-                break;
-              case 2:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink] + ". Divirta-se!");
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomDrink = Math.floor(Math.random() * drink.length);
-            var randomSentence = Math.floor(Math.random() * 2);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink] + ". Divirta-se!");
-                break;
-            }
-          }
-          break;
+case "drink":
+if(typeof command[1] == "@"){
+var crowd = API.getUsers();
+var randomUser = Math.floor(Math.random() * crowd.length);
+var randomDrink = Math.floor(Math.random() * drink.length);
+var randomSentence = Math.floor(Math.random() * 2);
+switch(randomSentence){
+case 0:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink]+ ". Divirta-se!");
+break;
+case 1:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink] + ". Divirta-se!");
+break;
+case 2:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink] + ". Divirta-se!");
+break;
+}
+}else{
+if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
+var randomDrink = Math.floor(Math.random() * drink.length);
+var randomSentence = Math.floor(Math.random() * 2);
+switch(randomSentence){
+case 0:
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + drink[randomDrink] + ". Divirta-se!");
+break;
+}
+}
+break;
           
-      case "drugs":
-          if(typeof command[1] == "@"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomTaco = Math.floor(Math.random() * tacos.length);
-            var randomSentence = Math.floor(Math.random() * 3);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + crowd[randomUser].username + ", fuma esse " + tacos[randomTaco] + ", seu vagabundo!");
-                break;
-              case 1:
-                API.sendChat("@" + crowd[randomUser].username + ", pega um " + tacos[randomTaco] + " ae bro!");
-                break;
-              case 2:
-                API.sendChat("Um " + tacos[randomTaco] + " para você, @" + crowd[randomUser].username + ".");
-                break;
-              case 3:
-                API.sendChat("/me deu " + tacos[randomTaco] + " para @" + crowd[randomUser].username + "!");
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomTaco = Math.floor(Math.random() * tacos.length);
-            var randomSentence = Math.floor(Math.random() * 3);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@" + command[1] + ", fuma esse " + tacos[randomTaco] + ", seu vagabundo!");
-                break;
-              case 1:
-                API.sendChat("@" + command[1] + ", pega um " + tacos[randomTaco] + " ae bro!");
-                break;
-              case 2:
-                API.sendChat("Um " + tacos[randomTaco] + " para você, @" + command[1] + ".");
-                break;
-              case 3:
-                API.sendChat("/me Deu " + tacos[randomTaco] + " para @" + command[1] + "!");
-                break;
-                }}
-                break;
+case "drugs":
+if(typeof command[1] == "@"){
+var crowd = API.getUsers();
+var randomUser = Math.floor(Math.random() * crowd.length);
+var randomTaco = Math.floor(Math.random() * tacos.length);
+var randomSentence = Math.floor(Math.random() * 3);
+switch(randomSentence){
+case 0:
+API.sendChat("@" + crowd[randomUser].username + ", fuma esse " + tacos[randomTaco] + ", seu vagabundo!");
+break;
+case 1:
+API.sendChat("@" + crowd[randomUser].username + ", pega um " + tacos[randomTaco] + " ae bro!");
+break;
+case 2:
+API.sendChat("Um " + tacos[randomTaco] + " para você, @" + crowd[randomUser].username + ".");
+break;
+case 3:
+API.sendChat(" deu " + tacos[randomTaco] + " para @" + crowd[randomUser].username + "!");
+break;
+}
+}else{
+if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
+var randomTaco = Math.floor(Math.random() * tacos.length);
+var randomSentence = Math.floor(Math.random() * 3);
+switch(randomSentence){
+case 0:
+API.sendChat("@" + command[1] + ", fuma esse " + tacos[randomTaco] + ", seu vagabundo!");
+break;
+case 1:
+API.sendChat("@" + command[1] + ", pega um " + tacos[randomTaco] + " ae bro!");
+break;
+case 2:
+API.sendChat("Um " + tacos[randomTaco] + " para você, @" + command[1] + ".");
+break;
+case 3:
+API.sendChat(" Deu " + tacos[randomTaco] + " para @" + command[1] + "!");
+break;
+}}
+break;
           
-           case "abraço":
-          if(typeof command[1] == "@"){
-            var crowd = API.getUsers();
-            var randomUser = Math.floor(Math.random() * crowd.length);
-            var randomAbraco = Math.floor(Math.random() * abraco.length);
-            var randomSentence = Math.floor(Math.random() * 2);
-            switch(randomSentence){
-              case 0:
-                API.sendChat("@"+data.from+" "+abraco[randomAbraco]+" @"+command[1]+"!");
-                break;
-            }
-          }else{
-            if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
-            var randomAbraco = Math.floor(Math.random() * abraco.length);
-            var randomSentence = Math.floor(Math.random() * 1);
-            switch(randomSentence){
-              case 0:
-              API.sendChat("@"+data.from+" "+abraco[randomAbraco]+" @"+command[1]+"!");
-                break;
-            }
-          }
-          break;
-          case "musica":
-           if(API.getMedia().format == 1){
-           API.sendChat("@" + data.from + " " + "http://youtu.be/" + API.getMedia().cid);
-           }else{
-           var id = API.getMedia().cid;
-           SC.get('/tracks', { ids: id,}, function(tracks) {
-           API.sendChat("@"+data.from+" "+tracks[0].permalink_url);
-           });
-           }
-          break;
-      }
-  }
+case "abraço":
+if(typeof command[1] == "@"){
+var crowd = API.getUsers();
+var randomUser = Math.floor(Math.random() * crowd.length);
+var randomAbraco = Math.floor(Math.random() * abraco.length);
+var randomSentence = Math.floor(Math.random() * 2);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+abraco[randomAbraco]+" @"+command[1]+"!");
+break;
+}
+}else{
+if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
+var randomAbraco = Math.floor(Math.random() * abraco.length);
+var randomSentence = Math.floor(Math.random() * 1);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+abraco[randomAbraco]+" @"+command[1]+"!");
+break;
+}
+}
+break;
+case "musica":
+if(API.getMedia().format == 1){
+API.sendChat("@" + data.from + " " + "http://youtu.be/" + API.getMedia().cid);
+}else{
+var id = API.getMedia().cid;
+SC.get('/tracks', { ids: id,}, function(tracks) {
+API.sendChat("@"+data.from+" "+tracks[0].permalink_url);
+});
+}
+break;
+}
+}
 }
