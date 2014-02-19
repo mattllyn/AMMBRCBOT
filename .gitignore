@@ -1,5 +1,5 @@
 //Auto-Chat
-API.on(API.DJ_ADVANCE,function(update){
+/*API.on(API.DJ_ADVANCE,function(update){
 var hist = API.getHistory();
 for (var i in hist) {
 if (hist[i].media.id == update.media.id) {
@@ -9,7 +9,7 @@ break;
 }
 }
 });
-
+*/
 tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
 cookie = ["um biscoito de chocolate","um cupcake","um cookie de aveia e passas","um brownie 'especial'","um cracker animal","um lanche Scooby"];
