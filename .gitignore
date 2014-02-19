@@ -46,19 +46,19 @@ var roomname = $("#room-name").text();
 $("#room-name").css("color", "red");
 $("span.username").css("color", "red");
 
-
-
-/*API.on(API.DJ_ADVANCE,function(update){
+API.on(API.DJ_ADVANCE,function(update){
 var hist = API.getHistory();
+var djID = API.getHistory()[0].user.id;
+//var djID = API.getDJ()[0].user.id;
 for (var i in hist) {
 if (hist[i].media.id == update.media.id) {
-API.sendChat(" @"+ API.getDJ().username +" Esse video já foi tocado! Pulando...");
-API.moderateForceSkip();
+API.sendChat(" @"+ API.getDJ().username +" Esse video está no histórico! Pulando...");
+API.moderateForceSkip(djID); //> 1
 break;
 }
 }
 });
-*/
+
 tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
 cookie = ["um biscoito de chocolate","um cupcake","um cookie de aveia e passas","um brownie 'especial'","um cracker animal","um lanche Scooby"];
