@@ -46,27 +46,7 @@ var roomname = $("#room-name").text();
 $("#room-name").css("color", "red");
 $("span.username").css("color", "red");
 
-API.on(API.DJ_ADVANCE,function(update){
-var hist = API.getHistory();
-var djID = API.getHistory()[0].user.cid;
-var djName = API.getHistory()[0].user.username;
-//var autoSkip;
-for (var i in hist) {
-if (hist[i].media.cid == update.media.cid) {
-API.moderateForceSkip();
-API.sendChat(" @"+ API.getDJ().username +" Esse video já foi tocado! Pulando...");
-//API.sendChat("That song is on the history!");
-//if (API.getUsers().length >= 3) {
-//API.moderateMoveDJ(djID, 3);
-//} else {
-//API.moderateMoveDJ(djID, API.getUsers().length);
-//}
-break;
-}}
-//clearTimeout(autoSkip);
-//autoSkip = setTimeout(function(){API.sendChat("/me@" + djName + " Your song is longer than the accepted limit from 6:30");
-//API.moderateForceSkip();}, 390 * 1000);
-});
+
 
 /*API.on(API.DJ_ADVANCE,function(update){
 var hist = API.getHistory();
