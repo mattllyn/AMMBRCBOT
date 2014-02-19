@@ -1,4 +1,73 @@
+//Auto Woot
+function AutoWoot() {
+    aw = {
+        autowoot: true,
+        clicks: 0,
+        close: function () {
+            API.off(API.DJ_ADVANCE, aw.djAdvance);
+            API.off(API.CHAT, aw.chat);
+            $("#woot").unbind("click", aw.doubleClick);
+        },
+        djAdvance: function () {
+            if (aw.autowoot) {
+                setTimeout(function () {
+                    $("#woot").click();
+                }, 1000);
+            }
+        },
+        doubleClick: function () {
+            aw.clicks++;
+            if (aw.clicks == 2) {
+                aw.autowoot = !aw.autowoot;
+                aw.clicks = 0;
+                _$context.trigger("notify", "icon-woot", aw.autowoot ? "AutoWoot ist an!" : "AutoWoot ist aus!");
+            }
+            setTimeout(function () {aw.clicks = 0;}, 600);
+        }
+    };
+
+    API.on(API.DJ_ADVANCE, aw.djAdvance, this);
+    API.on(API.CHAT, aw.chat, this);
+    $("#woot").bind("click", aw.doubleClick);
+    $("#woot").click();
+}
+//Auto Join
+if (typeof aw !== "undefined") aw.close();
+AutoWoot();
+API.on(API.WAIT_LIST_UPDATE, callback);
+function callback(){
+var waitingCount = API.getWaitList().length;
+if (waitingCount<50){API.djJoin();}}
+
 //Auto-Chat
+//$("#room").css("background-image", "url(http://i.imgur.com/k9zVa92.png)");
+$(".item.s-av.selected").click();
+var roomname = $("#room-name").text();
+$("#room-name").css("color", "red");
+$("span.username").css("color", "red");
+
+API.on(API.DJ_ADVANCE,function(update){
+var hist = API.getHistory();
+var djID = API.getHistory()[0].user.cid;
+var djName = API.getHistory()[0].user.username;
+//var autoSkip;
+for (var i in hist) {
+if (hist[i].media.cid == update.media.cid) {
+API.moderateForceSkip();
+API.sendChat(" @"+ API.getDJ().username +" Esse video já foi tocado! Pulando...");
+//API.sendChat("That song is on the history!");
+//if (API.getUsers().length >= 3) {
+//API.moderateMoveDJ(djID, 3);
+//} else {
+//API.moderateMoveDJ(djID, API.getUsers().length);
+//}
+break;
+}}
+//clearTimeout(autoSkip);
+//autoSkip = setTimeout(function(){API.sendChat("/me@" + djName + " Your song is longer than the accepted limit from 6:30");
+//API.moderateForceSkip();}, 390 * 1000);
+});
+
 /*API.on(API.DJ_ADVANCE,function(update){
 var hist = API.getHistory();
 for (var i in hist) {
