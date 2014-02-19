@@ -1,35 +1,35 @@
 //Auto Woot
 function AutoWoot() {
-    aw = {
-        autowoot: true,
-        clicks: 0,
-        close: function () {
-            API.off(API.DJ_ADVANCE, aw.djAdvance);
-            API.off(API.CHAT, aw.chat);
-            $("#woot").unbind("click", aw.doubleClick);
-        },
-        djAdvance: function () {
-            if (aw.autowoot) {
-                setTimeout(function () {
-                    $("#woot").click();
-                }, 1000);
-            }
-        },
-        doubleClick: function () {
-            aw.clicks++;
-            if (aw.clicks == 2) {
-                aw.autowoot = !aw.autowoot;
-                aw.clicks = 0;
-                _$context.trigger("notify", "icon-woot", aw.autowoot ? "AutoWoot ist an!" : "AutoWoot ist aus!");
-            }
-            setTimeout(function () {aw.clicks = 0;}, 600);
-        }
-    };
+aw = {
+autowoot: true,
+clicks: 0,
+close: function () {
+API.off(API.DJ_ADVANCE, aw.djAdvance);
+API.off(API.CHAT, aw.chat);
+$("#woot").unbind("click", aw.doubleClick);
+},
+djAdvance: function () {
+if (aw.autowoot) {
+setTimeout(function () {
+$("#woot").click();
+}, 1000);
+}
+},
+doubleClick: function () {
+aw.clicks++;
+if (aw.clicks == 2) {
+aw.autowoot = !aw.autowoot;
+aw.clicks = 0;
+_$context.trigger("notify", "icon-woot", aw.autowoot ? "AutoWoot ist an!" : "AutoWoot ist aus!");
+}
+setTimeout(function () {aw.clicks = 0;}, 600);
+}
+};
 
-    API.on(API.DJ_ADVANCE, aw.djAdvance, this);
-    API.on(API.CHAT, aw.chat, this);
-    $("#woot").bind("click", aw.doubleClick);
-    $("#woot").click();
+API.on(API.DJ_ADVANCE, aw.djAdvance, this);
+API.on(API.CHAT, aw.chat, this);
+$("#woot").bind("click", aw.doubleClick);
+$("#woot").click();
 }
 //Auto Join
 if (typeof aw !== "undefined") aw.close();
@@ -46,18 +46,7 @@ var roomname = $("#room-name").text();
 $("#room-name").css("color", "red");
 $("span.username").css("color", "red");
 
-API.on(API.DJ_ADVANCE,function(update){
-var hist = API.getHistory();
-var djID = API.getHistory()[0].user.id;
-//var djID = API.getDJ()[0].user.id;
-for (var i in hist) {
-if (hist[i].media.id == update.media.id) {
-API.sendChat(" @"+ API.getDJ().username +" Esse video está no histórico! Pulando...");
-API.moderateForceSkip(djID); //> 1
-break;
-}
-}
-});
+
 
 tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
@@ -90,12 +79,14 @@ if (message.indexOf("!desligar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
 API.off(API.CHAT,onChat);
+API.off(API.DJ_ADVANCE,up);
 }
 if (message.indexOf("!relogar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
 API.sendChat(" @" + data.from + " relogando bot...");
 API.off(API.CHAT,onChat);
+API.off(API.DJ_ADVANCE,up);
 setTimeout(function () {$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/.gitignore");
 }, 1000);
 }
@@ -312,6 +303,21 @@ SC.get('/tracks', { ids: id,}, function(tracks) {
 API.sendChat("@"+data.from+" "+tracks[0].permalink_url);
 });
 }
+break;
+}
+}
+}
+//API.on(API.DJ_ADVANCE,function(update) {
+API.on(API.DJ_ADVANCE,up);
+function up(update) {
+var hist = API.getHistory();
+var djID = API.getHistory()[0].user.id;
+//var i =0;
+for(var i = 0; i < hist.length; i++){
+//for (var i in hist){
+if (hist[i].media.id == update.media.id) {
+API.sendChat(" @"+ API.getDJ().username +" Esse video está no histórico! Pulando...");
+API.moderateForceSkip(djID); //> 1
 break;
 }
 }
