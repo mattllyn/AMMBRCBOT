@@ -307,6 +307,7 @@ break;
 }
 }
 }
+/*
 //API.on(API.DJ_ADVANCE,function(update) {
 API.on(API.DJ_ADVANCE,up);
 function up(update) {
@@ -321,4 +322,4 @@ API.moderateForceSkip(djID); //> 1
 break;
 }
 }
-}
+}*/
