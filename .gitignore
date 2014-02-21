@@ -98,15 +98,13 @@ if (message.indexOf("!desligar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
 API.off(API.CHAT,onChat);
-API.off(API.DJ_ADVANCE,up);
 }
 if (message.indexOf("!relogar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
 API.sendChat(" @" + data.from + " relogando bot...");
 API.off(API.CHAT,onChat);
-API.off(API.DJ_ADVANCE,up);
-setTimeout(function () {$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/.gitignore");
+setTimeout(function () {$.getScript("https://github.com/mattllyn/AMMBRCBOT/raw/master/.gitignore);
 }, 1000);
 }
 if (message.indexOf("!limparchat") == 0)
