@@ -104,7 +104,7 @@ if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
 API.sendChat(" @" + data.from + " relogando bot...");
 API.off(API.CHAT,onChat);
-setTimeout(function () {$.getScript("https://github.com/mattllyn/AMMBRCBOT/raw/master/.gitignore);
+setTimeout(function () {$.getScript("https://github.com/mattllyn/AMMBRCBOT/raw/master/.gitignore");
 }, 1000);
 }
 if (message.indexOf("!limparchat") == 0)
