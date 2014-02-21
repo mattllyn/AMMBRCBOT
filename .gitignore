@@ -31,6 +31,7 @@ API.on(API.CHAT, aw.chat, this);
 $("#woot").bind("click", aw.doubleClick);
 $("#woot").click();
 }
+/*
 //Auto Join
 if (typeof aw !== "undefined") aw.close();
 AutoWoot();
@@ -38,7 +39,7 @@ API.on(API.WAIT_LIST_UPDATE, callback);
 function callback(){
 var waitingCount = API.getWaitList().length;
 if (waitingCount<50){API.djJoin();}}
-
+*/
 //Auto-Chat
 //$("#room").css("background-image", "url(http://i.imgur.com/k9zVa92.png)");
 $(".item.s-av.selected").click();
