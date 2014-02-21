@@ -46,7 +46,25 @@ var roomname = $("#room-name").text();
 $("#room-name").css("color", "red");
 $("span.username").css("color", "red");
 
+var announcementTick = 60 * 5;
+var lastAnnouncement = 0;
 
+var announcements =
+["Para ver as regras da sala clique no link > http://goo.gl/tlKc4V","Aprenda e use AutoWoot > http://goo.gl/YcXZLw","Acesse nosso blog > http://www.ammbr.com.br/"];
+function sendAnnouncement()
+{
+if (lastAnnouncement++ >= announcements.length - 1)
+{
+lastAnnouncement = 0;
+}
+chatMe(announcements[lastAnnouncement]);
+}
+
+function chatMe(msg)
+{
+API.sendChat(msg);
+};
+window.setInterval(sendAnnouncement, 1000 * announcementTick);
 
 tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
@@ -307,19 +325,3 @@ break;
 }
 }
 }
-/*
-//API.on(API.DJ_ADVANCE,function(update) {
-API.on(API.DJ_ADVANCE,up);
-function up(update) {
-var hist = API.getHistory();
-var djID = API.getHistory()[0].user.id;
-//var i =0;
-for(var i = 0; i < hist.length; i++){
-//for (var i in hist){
-if (hist[i].media.id == update.media.id) {
-API.sendChat(" @"+ API.getDJ().username +" Esse video está no histórico! Pulando...");
-API.moderateForceSkip(djID); //> 1
-break;
-}
-}
-}*/
