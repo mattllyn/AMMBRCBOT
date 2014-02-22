@@ -138,7 +138,7 @@ if (message.indexOf("!adblock") == 0) API.sendChat(":star2: Para remover as prop
 if (message.indexOf("!autowoot") == 0) API.sendChat(":star2: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
 if (message.indexOf("!blog") == 0) API.sendChat(":star2: Acesse nosso blog > http://www.ammbr.com.br/");
 if (message.indexOf("!yt") == 0) API.sendChat(":star2: Acesse nosso canal no Youtube > https://www.youtube.com/TheAmmbr");
-if (message.indexOf("!rules") == 0) API.sendChat(":star2: Click in the link for show the rules > http://goo.gl/Z5dgvI");
+if (message.indexOf("!rules") == 0) API.sendChat(":star2: To see the rules > http://goo.gl/Z5dgvI");
 
 //if (message.indexOf("! ") == 0) API.sendChat(" ");
     
