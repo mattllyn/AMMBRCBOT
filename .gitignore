@@ -47,11 +47,11 @@ var roomname = $("#room-name").text();
 $("#room-name").css("color", "red");
 $("span.username").css("color", "red");
 
-var announcementTick = 60 * 5;
+var announcementTick = 60 * 10;
 var lastAnnouncement = 0;
 
 var announcements =
-["Para ver as regras da sala clique no link > http://goo.gl/tlKc4V","Aprenda e use AutoWoot > http://goo.gl/YcXZLw","Acesse nosso blog > http://www.ammbr.com.br/"];
+["Comandos do AMMBR-BOT > !temas !regras !musica !fb !adblock !autowoot !blog !yt !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie"];
 function sendAnnouncement()
 {
 if (lastAnnouncement++ >= announcements.length - 1)
@@ -130,12 +130,15 @@ API.sendChat("@"+ data.from +" gostou pra carolho do seu video @"+ API.getDJ().u
 if (message.indexOf("!chato") == 0) {
 API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima! :-1: :broken_heart: ");
 }
-if (message.indexOf("!comandos") == 0) API.sendChat(":star2: !temas !regras !musica !fb !adblock !autowoot !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie");
+if (message.indexOf("!comandos") == 0) API.sendChat(":star2: !temas !regras !musica !fb !adblock !autowoot !blog !yt !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie");
 if (message.indexOf("!temas") == 0) API.sendChat(":star2: Temas > Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
 if (message.indexOf("!regras") == 0) API.sendChat(":star2: Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
-if (message.indexOf("!fb") == 0) API.sendChat(":star2: Curta nosso facebook: http://migre.me/hG4pT | Acesse nosso blog: http://www.ammbr.com.br/");
-if (message.indexOf("!adblock") == 0) API.sendChat(":star2: Para remover as propagandas dos videos use AdBlock: http://www.adblockplus.org/");
+if (message.indexOf("!fb") == 0) API.sendChat(":star2: Curta nosso facebook: http://migre.me/hG4pT ");
+if (message.indexOf("!adblock") == 0) API.sendChat(":star2: Para remover as propagandas dos videos use AdBlock > http://www.adblockplus.org/");
 if (message.indexOf("!autowoot") == 0) API.sendChat(":star2: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
+if (message.indexOf("!blog") == 0) API.sendChat(":star2: Acesse nosso blog > http://www.ammbr.com.br/");
+if (message.indexOf("!yt") == 0) API.sendChat(":star2: Acesse nosso canal no Youtube > https://www.youtube.com/TheAmmbr");
+
 //if (message.indexOf("! ") == 0) API.sendChat(" ");
     
 
