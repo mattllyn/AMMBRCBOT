@@ -47,26 +47,6 @@ var roomname = $("#room-name").text();
 $("#room-name").css("color", "red");
 $("span.username").css("color", "red");
 
-var announcementTick = 60 * 10;
-var lastAnnouncement = 0;
-
-var announcements =
-["Comandos do AMMBR-BOT > !rules !regras !temas !musica !fb !adblock !autowoot !blog !yt !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie"];
-function sendAnnouncement()
-{
-if (lastAnnouncement++ >= announcements.length - 1)
-{
-lastAnnouncement = 0;
-}
-chatMe(announcements[lastAnnouncement]);
-}
-
-function chatMe(msg)
-{
-API.sendChat(msg);
-};
-window.setInterval(sendAnnouncement, 1000 * announcementTick);
-
 tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
 cookie = ["um biscoito de chocolate","um cupcake","um cookie de aveia e passas","um brownie 'especial'","um cracker animal","um lanche Scooby"];
@@ -98,12 +78,16 @@ if (message.indexOf("!desligar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
 API.off(API.CHAT,onChat);
+API.off(API.DJ_ADVANCE, aw.djAdvance);
+API.off(API.CHAT, aw.chat);
 }
 if (message.indexOf("!relogar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
 API.sendChat(" @" + data.from + " relogando bot...");
 API.off(API.CHAT,onChat);
+API.off(API.DJ_ADVANCE, aw.djAdvance);
+API.off(API.CHAT, aw.chat);
 setTimeout(function () {$.getScript("https://github.com/mattllyn/AMMBRCBOT/raw/master/.gitignore");
 }, 1000);
 }
@@ -328,3 +312,23 @@ break;
 }
 }
 }
+
+var announcementTick = 60 * 1;
+var lastAnnouncement = 0;
+
+var announcements =
+["Comandos do AMMBR-BOT > !rules !regras !temas !musica !fb !adblock !autowoot !blog !yt !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie"];
+function sendAnnouncement()
+{
+if (lastAnnouncement++ >= announcements.length - 1)
+{
+lastAnnouncement = 0;
+}
+chatMe(announcements[lastAnnouncement]);
+}
+
+function chatMe(msg)
+{
+API.sendChat(msg);
+};
+window.setInterval(sendAnnouncement, 1000 * announcementTick);
