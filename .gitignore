@@ -313,7 +313,7 @@ break;
 }
 }
 
-var announcementTick = 60 * 1;
+var announcementTick = 60 * 10;
 var lastAnnouncement = 0;
 
 var announcements =
