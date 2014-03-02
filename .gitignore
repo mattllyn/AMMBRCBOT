@@ -1,3 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 //Auto Woot
 function AutoWoot() {
 aw = {
@@ -25,43 +36,45 @@ _$context.trigger("notify", "icon-woot", aw.autowoot ? "AutoWoot ist an!" : "Aut
 setTimeout(function () {aw.clicks = 0;}, 600);
 }
 };
-
 API.on(API.DJ_ADVANCE, aw.djAdvance, this);
 API.on(API.CHAT, aw.chat, this);
 $("#woot").bind("click", aw.doubleClick);
 $("#woot").click();
 }
-/*
-//Auto Join
-if (typeof aw !== "undefined") aw.close();
-AutoWoot();
-API.on(API.WAIT_LIST_UPDATE, callback);
-function callback(){
-var waitingCount = API.getWaitList().length;
-if (waitingCount<50){API.djJoin();}}
-*/
+////////////////////////////////////////////////////////////////////////////////
 //Auto-Chat
-//$("#room").css("background-image", "url(http://i.imgur.com/k9zVa92.png)");
 $(".item.s-av.selected").click();
 var roomname = $("#room-name").text();
 $("#room-name").css("color", "red");
 $("span.username").css("color", "red");
 
+////////////////////////////////////////////////////////////////////////////////
 tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
 cookie = ["um biscoito de chocolate","um cupcake","um cookie de aveia e passas","um brownie 'especial'","um cracker animal","um lanche Scooby"];
 drink = ["Caipirinha", "Wisk", "Tequila", "Champagne", "Martini", "Capeta"];
 abraco = ["agarrou a bunda de","deu um abraço de urso em","deu um abraço gostosinho em","apertou a bundinha de"];
 punirr = ["esfrega uma lixa no rosto de","penetra uma caneta no ouvido de","cutuca os olhos de","da uma mordida em","aperta os mamilos de","cospe em"];
-Array.prototype.remove=function(){var c,f=arguments,d=f.length,e;while(d&&this.length){c=f[--d];while((e=this.indexOf(c))!==-1){this.splice(e,1)}}return this};
+////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////
+//dc = {};
 API.on(API.CHAT,onChat);
 API.sendChat(":white_check_mark: AMMBR Bot ligado. :white_check_mark:");
 function onChat(data) {
 var message = data.message.toLowerCase();
+/*var id = data.fromID;
+var userfrom = data.from;
+var userfromid = data.fromID;
+var getpos = API.getWaitListPosition(userfromid);*/
 
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!") == 0) {
+API.moderateDeleteChat(data.chatID);
+}
+////////////////////////////////////////////////////////////////////////////////
 //Admins Commands
-// Permissions > 1 = Bouncer, 2 = Manager, 3 = Co-Host
+// Permissions > 0 = Normal User, 1 = Bouncer, 2 = Manager, 3 = Co-Host
 if (message.indexOf("!travar") == 0)
 if (API.getUser(data.fromID).permission > 1){
 API.moderateLockWaitList(true);
@@ -70,10 +83,12 @@ if (message.indexOf("!destravar") == 0)
 if (API.getUser(data.fromID).permission > 1){
 API.moderateLockWaitList(false);
 }
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!pular") == 0)
 if (API.getUser(data.fromID).permission > 1){
 API.moderateForceSkip();
 }
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!desligar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
@@ -81,6 +96,7 @@ API.off(API.CHAT,onChat);
 API.off(API.DJ_ADVANCE, aw.djAdvance);
 API.off(API.CHAT, aw.chat);
 }
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!relogar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
@@ -91,6 +107,7 @@ API.off(API.CHAT, aw.chat);
 setTimeout(function () {$.getScript("https://github.com/mattllyn/AMMBRCBOT/raw/master/.gitignore");
 }, 1000);
 }
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!limparchat") == 0)
 if (API.getUser(data.fromID).permission > 2){
 var arg = $("#chat-messages").children();
@@ -99,21 +116,47 @@ deleteAll = true;
 setTimeout(function(){
 }, 950);
 }
-
+////////////////////////////////////////////////////////////////////////////////
 //User Commands
+/*
+if (message.indexOf("!dc") == 0)
+if (API.getUser(data.fromID).permission > 0){
+if (getpos == -1) {
+if (dc[userfrom] == "undefined") {
+} else {
+if (dc[userfrom] > -1) {
+API.sendChat("@" + userfrom + " You should be at position" + dc[userfrom] + ". Adding user to their spot!");
+API.moderateLockWaitList(true, false);
+setTimeout(function (API.moderateAddDJ(userfromid)) {}, 1000);
+setTimeout(function (API.moderateMoveDJ(userfromid, dc[userfrom])) {}, 1500);
+setTimeout(function (API.moderateAddDJ(userfromid)) {}, 1000);
+}
+}
+}
+
+for (var i = 0; i <= dc.length; i++) {
+if(dc[userfrom] == ){
+API.sendChat("@" + userfrom + " You should be at position" + dc);
+}
+}
+*/
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!djinfo") == 0) {
 var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
 API.sendChat("DJ atual: "+ API.getDJ().username +". Pontos: "+ total +" | Fans: "+ API.getDJ().fans +" | Curated: "+ API.getDJ().curatorPoints +".");
 }
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!meuid") == 0) {
 API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
 }
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!legal") == 0) {
 API.sendChat("@"+ data.from +" gostou pra carolho do seu video @"+ API.getDJ().username +", continue assim! :star2: :revolving_hearts:");
 }
 if (message.indexOf("!chato") == 0) {
 API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima! :-1: :broken_heart: ");
 }
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!comandos") == 0) API.sendChat(":star2: !rules !regras !temas !musica !fb !adblock !autowoot !blog !yt !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie");
 if (message.indexOf("!temas") == 0) API.sendChat(":star2: Temas > Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
 if (message.indexOf("!regras") == 0) API.sendChat(":star2: Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
@@ -123,11 +166,10 @@ if (message.indexOf("!autowoot") == 0) API.sendChat(":star2: Tutorial Auto-woot 
 if (message.indexOf("!blog") == 0) API.sendChat(":star2: Acesse nosso blog > http://www.ammbr.com.br/");
 if (message.indexOf("!yt") == 0) API.sendChat(":star2: Acesse nosso canal no Youtube > https://www.youtube.com/TheAmmbr");
 if (message.indexOf("!rules") == 0) API.sendChat(":star2: To see the rules > http://goo.gl/Z5dgvI");
-
 //if (message.indexOf("! ") == 0) API.sendChat(" ");
     
-
-//Retirado de outro Bot -q
+////////////////////////////////////////////////////////////////////////////////
+//Codado de outro Bot
 if(data.message.indexOf('!') === 0){
 var msg = data.message, from = data.from, fromID = data.fromID;
 var command = msg.substring(1).split(' ')
@@ -137,7 +179,7 @@ command[1] = command[1] + ' ' + command[i];
 }
 }
 switch(command[0].toLowerCase()){
-
+////////////////////////////////////////////////////////////////////////////////
 case "punir":
 if(typeof command[1] == "@"){
 var crowd = API.getUsers();
@@ -161,7 +203,7 @@ break;
 
 }
 break;
-          
+////////////////////////////////////////////////////////////////////////////////
 case "cookie":
 if(typeof command[1] == "@"){
 var crowd = API.getUsers();
@@ -207,7 +249,7 @@ API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cook
 break;
 }}
 break;
-
+////////////////////////////////////////////////////////////////////////////////
 case "drink":
 if(typeof command[1] == "@"){
 var crowd = API.getUsers();
@@ -236,7 +278,7 @@ break;
 }
 }
 break;
-          
+////////////////////////////////////////////////////////////////////////////////
 case "drugs":
 if(typeof command[1] == "@"){
 var crowd = API.getUsers();
@@ -276,7 +318,7 @@ API.sendChat(" Deu " + tacos[randomTaco] + " para @" + command[1] + "!");
 break;
 }}
 break;
-          
+////////////////////////////////////////////////////////////////////////////////
 case "abraço":
 if(typeof command[1] == "@"){
 var crowd = API.getUsers();
@@ -299,6 +341,7 @@ break;
 }
 }
 break;
+////////////////////////////////////////////////////////////////////////////////
 case "musica":
 if(API.getMedia().format == 1){
 API.sendChat("@" + data.from + " " + "http://youtu.be/" + API.getMedia().cid);
@@ -312,8 +355,9 @@ break;
 }
 }
 }
-
-var announcementTick = 60 * 10;
+////////////////////////////////////////////////////////////////////////////////
+/*
+var announcementTick = 60 * 1;
 var lastAnnouncement = 0;
 
 var announcements =
@@ -331,4 +375,14 @@ function chatMe(msg)
 {
 API.sendChat(msg);
 };
-window.setInterval(sendAnnouncement, 1000 * announcementTick);
+window.setInterval(sendAnnouncement, 1000 * announcementTick); */
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
