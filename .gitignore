@@ -356,12 +356,12 @@ break;
 }
 }
 ////////////////////////////////////////////////////////////////////////////////
-/*
+
 var announcementTick = 60 * 1;
 var lastAnnouncement = 0;
 
 var announcements =
-["Comandos do AMMBR-BOT > !rules !regras !temas !musica !fb !adblock !autowoot !blog !yt !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie"];
+["/me Use AutoWoot e evite ser removido da lista de espera de DJ!!! Link > http://goo.gl/YcXZLw "];
 function sendAnnouncement()
 {
 if (lastAnnouncement++ >= announcements.length - 1)
@@ -375,7 +375,7 @@ function chatMe(msg)
 {
 API.sendChat(msg);
 };
-window.setInterval(sendAnnouncement, 1000 * announcementTick); */
+window.setInterval(sendAnnouncement, 1000 * announcementTick);
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
