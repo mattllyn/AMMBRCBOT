@@ -118,7 +118,6 @@ API.off(API.CHAT, aw.chat);
 if (message.indexOf("!relogar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
-API.sendChat(" @" + data.from + " relogando bot...");
 API.off(API.CHAT,onChat);
 API.off(API.CHAT,onChat2);
 API.off(API.DJ_ADVANCE, aw.djAdvance);
@@ -388,7 +387,7 @@ API.moderateRemoveDJ(userid);
 if (cmd == "!add")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateAddDJ(userid);
-}
+
 }
 }
 ////////////////////////////////////////////////////////////////////////////////
