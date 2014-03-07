@@ -43,10 +43,19 @@ $("#woot").click();
 }
 ////////////////////////////////////////////////////////////////////////////////
 //Auto-Chat
+$("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
 $(".item.s-av.selected").click();
-var roomname = $("#room-name").text();
-$("#room-name").css("color", "red");
-$("span.username").css("color", "red");
+$("span.username").css("color", "#32CD32");
+$("#room-name").css("color", "#32CD32");
+$("#now-playing-media").css("color", "#32CD32");
+$("#hit").css("color", "#32CD32");
+$("#next-media-title").css("color", "#32CD32");
+$("#header-panel-bar").css("color", "#32CD32");
+$("#volume").css("color", "#32CD32");
+$("#now-playing-time").css("color", "#32CD32");
+$("#user-meta").css("color", "#32CD32");
 
 ////////////////////////////////////////////////////////////////////////////////
 tacos = new Array();
@@ -56,23 +65,28 @@ drink = ["Caipirinha", "Wisk", "Tequila", "Champagne", "Martini", "Capeta"];
 abraco = ["agarrou a bunda de","deu um abraço de urso em","deu um abraço gostosinho em","apertou a bundinha de"];
 punirr = ["esfrega uma lixa no rosto de","penetra uma caneta no ouvido de","cutuca os olhos de","da uma mordida em","aperta os mamilos de","cospe em"];
 ////////////////////////////////////////////////////////////////////////////////
+var users = API.getUsers();
 
+function getUserID(name) {
+for (var i in users) {
+if (users[i].username == name) {
+return users[i].id;
+}
+}
+return null;
+}
 ////////////////////////////////////////////////////////////////////////////////
-//dc = {};
+
 API.on(API.CHAT,onChat);
 API.sendChat(":white_check_mark: AMMBR Bot ligado. :white_check_mark:");
 function onChat(data) {
 var message = data.message.toLowerCase();
-/*var id = data.fromID;
-var userfrom = data.from;
-var userfromid = data.fromID;
-var getpos = API.getWaitListPosition(userfromid);*/
-
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!") == 0) {
 API.moderateDeleteChat(data.chatID);
 }
 ////////////////////////////////////////////////////////////////////////////////
+
 //Admins Commands
 // Permissions > 0 = Normal User, 1 = Bouncer, 2 = Manager, 3 = Co-Host
 if (message.indexOf("!travar") == 0)
@@ -89,12 +103,16 @@ if (API.getUser(data.fromID).permission > 1){
 API.moderateForceSkip();
 }
 ////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!desligar") == 0)
 if (API.getUser(data.fromID).permission > 3){
 API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
 API.off(API.CHAT,onChat);
+API.off(API.CHAT,onChat2);
 API.off(API.DJ_ADVANCE, aw.djAdvance);
 API.off(API.CHAT, aw.chat);
+
 }
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!relogar") == 0)
@@ -102,6 +120,7 @@ if (API.getUser(data.fromID).permission > 3){
 API.chatLog("Relogando bot...");
 API.sendChat(" @" + data.from + " relogando bot...");
 API.off(API.CHAT,onChat);
+API.off(API.CHAT,onChat2);
 API.off(API.DJ_ADVANCE, aw.djAdvance);
 API.off(API.CHAT, aw.chat);
 setTimeout(function () {$.getScript("https://github.com/mattllyn/AMMBRCBOT/raw/master/.gitignore");
@@ -116,30 +135,9 @@ deleteAll = true;
 setTimeout(function(){
 }, 950);
 }
+
 ////////////////////////////////////////////////////////////////////////////////
 //User Commands
-/*
-if (message.indexOf("!dc") == 0)
-if (API.getUser(data.fromID).permission > 0){
-if (getpos == -1) {
-if (dc[userfrom] == "undefined") {
-} else {
-if (dc[userfrom] > -1) {
-API.sendChat("@" + userfrom + " You should be at position" + dc[userfrom] + ". Adding user to their spot!");
-API.moderateLockWaitList(true, false);
-setTimeout(function (API.moderateAddDJ(userfromid)) {}, 1000);
-setTimeout(function (API.moderateMoveDJ(userfromid, dc[userfrom])) {}, 1500);
-setTimeout(function (API.moderateAddDJ(userfromid)) {}, 1000);
-}
-}
-}
-
-for (var i = 0; i <= dc.length; i++) {
-if(dc[userfrom] == ){
-API.sendChat("@" + userfrom + " You should be at position" + dc);
-}
-}
-*/
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!djinfo") == 0) {
 var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
@@ -355,27 +353,45 @@ break;
 }
 }
 }
+
+
+API.on(API.CHAT,onChat2);
+function onChat2(data) {
+var message = "";
+
+    var id = data.fromID;
+    var msg = data.message;
+    var userfrom = data.from;
+    var userfromid = data.fromID;
+    var getpos = API.getWaitListPosition(userfromid);
+    var noargs = msg.substr(msg.indexOf(""));
+    var cmd = (msg.split(" ")[0]).toLowerCase();
+    var arg1 = msg.split(" ")[1];
+    var arg2 = msg.split(" ")[2];
+    var args = msg.substr(msg.indexOf(" ") + 1);
+    var argname = arg1.slice(1, arg1.length);
+    var userid = getUserID(argname);
+
+    
+if (cmd == "!banir")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateBanUser(userid, 0, API.BAN.HOUR);
+}
+if (cmd == "!desbanir")
+if (API.getUser(data.fromID).permission > 2){
+API.moderateUnbanUser(userid);
+}
+if (cmd == "!rmv")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateRemoveDJ(userid);
+}
+if (cmd == "!add")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateAddDJ(userid);
+}
+}
+}
 ////////////////////////////////////////////////////////////////////////////////
-
-var announcementTick = 60 * 10;
-var lastAnnouncement = 0;
-
-var announcements =
-["/me Use AutoWoot e evite ser removido da lista de espera de DJ!!! Link > http://goo.gl/YcXZLw "];
-function sendAnnouncement()
-{
-if (lastAnnouncement++ >= announcements.length - 1)
-{
-lastAnnouncement = 0;
-}
-chatMe(announcements[lastAnnouncement]);
-}
-
-function chatMe(msg)
-{
-API.sendChat(msg);
-};
-window.setInterval(sendAnnouncement, 1000 * announcementTick);
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
