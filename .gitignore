@@ -15,19 +15,6 @@ $.getScript("https://raw.github.com/mattllyn/bgsps/master/.gitignore");
 $.getScript("http://pastebin.com/raw.php?i=t1usCNnQ"); 
 ////////////////////////////////////////////////////////////////////////////////
 //Auto-Chat
-$("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
-$("#playback .background").hide();
-$("#playback-container").css("border", "2px solid #4D4D4D");
-$(".item.s-av.selected").click();
-$("span.username").css("color", "#32CD32");
-$("#room-name").css("color", "#32CD32");
-$("#now-playing-media").css("color", "#32CD32");
-$("#hit").css("color", "#32CD32");
-$("#next-media-title").css("color", "#32CD32");
-$("#header-panel-bar").css("color", "#32CD32");
-$("#volume").css("color", "#32CD32");
-$("#now-playing-time").css("color", "#32CD32");
-$("#user-meta").css("color", "#32CD32");
 
 ////////////////////////////////////////////////////////////////////////////////
 tacos = new Array();
@@ -38,7 +25,6 @@ abraco = ["agarrou a bunda de","deu um abraço de urso em","deu um abraço gosto
 punirr = ["esfrega uma lixa no rosto de","penetra uma caneta no ouvido de","cutuca os olhos de","da uma mordida em","aperta os mamilos de","cospe em"];
 ////////////////////////////////////////////////////////////////////////////////
 var users = API.getUsers();
-
 function getUserID(name) {
 for (var i in users) {
 if (users[i].username == name) {
@@ -74,6 +60,8 @@ if (message.indexOf("!pular") == 0)
 if (API.getUser(data.fromID).permission > 1){
 API.moderateForceSkip();
 }
+////////////////////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!f5") == 0)
 if (API.getUser(data.fromID).permission > 3){
@@ -327,7 +315,6 @@ break;
 }
 }
 
-
 API.on(API.CHAT,onChat2);
 function onChat2(data) {
 var message = "";
@@ -349,21 +336,30 @@ var message = "";
 if (cmd == "!banir")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateBanUser(userid, 0, API.BAN.HOUR);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
 }
 if (cmd == "!desbanir")
 if (API.getUser(data.fromID).permission > 2){
 API.moderateUnbanUser(userid);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
 }
 if (cmd == "!rmv")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateRemoveDJ(userid);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
 }
 if (cmd == "!add")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateAddDJ(userid);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
 
 }
 }
+
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
