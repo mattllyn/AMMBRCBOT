@@ -122,7 +122,7 @@ API.off(API.CHAT,onChat);
 API.off(API.CHAT,onChat2);
 API.off(API.DJ_ADVANCE, aw.djAdvance);
 API.off(API.CHAT, aw.chat);
-setTimeout(function () {$.getScript("https://github.com/mattllyn/AMMBRCBOT/raw/master/.gitignore");
+setTimeout(function () {$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/.gitignore");
 }, 1000);
 }
 ////////////////////////////////////////////////////////////////////////////////
