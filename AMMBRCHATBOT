@@ -1,0 +1,190 @@
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+//Bgs
+$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/BGsPS");
+//Autowoot
+$.getScript("http://pastebin.com/raw.php?i=t1usCNnQ"); 
+//Games
+$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/Games");
+////////////////////////////////////////////////////////////////////////////////
+//Auto-Chat
+////////////////////////////////////////////////////////////////////////////////
+var users = API.getUsers();
+function getUserID(name) {
+for (var i in users) {
+if (users[i].username == name) {
+return users[i].id;
+}
+}
+return null;
+}
+////////////////////////////////////////////////////////////////////////////////
+
+API.on(API.CHAT,onChat);
+API.sendChat(":white_check_mark: AMMBR Bot ligado. :white_check_mark:");
+function onChat(data) {
+var message = data.message.toLowerCase();
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!") == 0) {
+API.moderateDeleteChat(data.chatID);
+}
+////////////////////////////////////////////////////////////////////////////////
+
+//Admins Commands
+// Permissions > 0 = Normal User, 1 = Bouncer, 2 = Manager, 3 = Co-Host
+if (message.indexOf("!travar") == 0)
+if (API.getUser(data.fromID).permission > 1){
+API.moderateLockWaitList(true);
+}
+if (message.indexOf("!destravar") == 0)
+if (API.getUser(data.fromID).permission > 1){
+API.moderateLockWaitList(false);
+}
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!pular") == 0)
+if (API.getUser(data.fromID).permission > 1){
+API.moderateForceSkip();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!f5") == 0)
+if (API.getUser(data.fromID).permission > 3){
+setTimeout(function() {
+$("#chat-messages").append("<div class='Blue system'><i class='icon icon-refresh-video'></i><span class='text'> Atualizando a página...</span></div>");
+location.reload(true);
+}, (1*1000));
+}
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!desligar") == 0)
+if (API.getUser(data.fromID).permission > 3){
+API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
+API.off(API.CHAT,onChat);
+API.off(API.CHAT,onChat2);
+
+}
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!relogar") == 0)
+if (API.getUser(data.fromID).permission > 3){
+API.chatLog("Relogando bot...");
+API.off(API.CHAT,onChat);
+API.off(API.CHAT,onChat2);
+setTimeout(function () {$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/AMMBRCHATBOT");
+}, 1000);
+}
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!limparchat") == 0)
+if (API.getUser(data.fromID).permission > 2){
+var arg = $("#chat-messages").children();
+for(var i=0;i<arg.length;i++) API.moderateDeleteChat(arg[i].className.substr(arg[i].className.indexOf('cid-')+4,14));
+deleteAll = true;
+setTimeout(function(){
+}, 950);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//User Commands
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!djinfo") == 0) {
+var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
+API.sendChat("DJ atual: "+ API.getDJ().username +". Pontos: "+ total +" | Fans: "+ API.getDJ().fans +" | Curated: "+ API.getDJ().curatorPoints +".");
+}
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!meuid") == 0) {
+API.sendChat("Username: "+ data.from +" ID: "+ data.fromID);
+}
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!legal") == 0) {
+API.sendChat("@"+ data.from +" gostou pra carolho do seu video @"+ API.getDJ().username +", continue assim! :star2: :revolving_hearts:");
+}
+if (message.indexOf("!chato") == 0) {
+API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima! :-1: :broken_heart: ");
+}
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!comandos") == 0) API.sendChat(":star2: !rules !regras !temas !musica !fb !adblock !autowoot !blog !yt !djinfo !meuid !legal !chato !punir !abraço !drugs !drink !cookie");
+if (message.indexOf("!temas") == 0) API.sendChat(":star2: Temas > Kpop, Progressive House, J music, EDM, Vocaloid, Electro, Kmusic, JRock, Hardstyle, Cultura Oriental, Drumstep, AMV, Dubstep, Cosplay, Game Music, Trap, Trance, Nico Nico Dancers, Techno, DnB, Rock, Indie.");
+if (message.indexOf("!regras") == 0) API.sendChat(":star2: Para ver as regras da sala clique no link > http://goo.gl/tlKc4V");
+if (message.indexOf("!fb") == 0) API.sendChat(":star2: Curta nosso facebook: http://migre.me/hG4pT ");
+if (message.indexOf("!adblock") == 0) API.sendChat(":star2: Para remover as propagandas dos videos use AdBlock > http://www.adblockplus.org/");
+if (message.indexOf("!autowoot") == 0) API.sendChat(":star2: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
+if (message.indexOf("!blog") == 0) API.sendChat(":star2: Acesse nosso blog > http://www.ammbr.com.br/");
+if (message.indexOf("!yt") == 0) API.sendChat(":star2: Acesse nosso canal no Youtube > https://www.youtube.com/TheAmmbr");
+if (message.indexOf("!rules") == 0) API.sendChat(":star2: To see the rules > http://goo.gl/Z5dgvI");
+//if (message.indexOf("! ") == 0) API.sendChat(" ");
+    
+////////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!musica") == 0)
+if(API.getMedia().format == 1){
+API.sendChat("@" + data.from + " " + "http://youtu.be/" + API.getMedia().cid);
+}else{
+var id = API.getMedia().cid;
+SC.get('/tracks', { ids: id,}, function(tracks) {
+API.sendChat("@"+data.from+" "+tracks[0].permalink_url);
+});
+}
+}
+////////////////////////////////////////////////////////////////////////////////
+API.on(API.CHAT,onChat2);
+function onChat2(data) {
+var message = "";
+
+    var id = data.fromID;
+    var msg = data.message;
+    var userfrom = data.from;
+    var userfromid = data.fromID;
+    var getpos = API.getWaitListPosition(userfromid);
+    var noargs = msg.substr(msg.indexOf(""));
+    var cmd = (msg.split(" ")[0]).toLowerCase();
+    var arg1 = msg.split(" ")[1];
+    var arg2 = msg.split(" ")[2];
+    var args = msg.substr(msg.indexOf(" ") + 1);
+    var argname = arg1.slice(1, arg1.length);
+    var userid = getUserID(argname);
+
+////////////////////////////////////////////////////////////////////////////////
+if (cmd == "!banir")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateBanUser(userid, 0, API.BAN.HOUR);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
+}
+if (cmd == "!desbanir")
+if (API.getUser(data.fromID).permission > 2){
+API.moderateUnbanUser(userid);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
+}
+if (cmd == "!rmv")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateRemoveDJ(userid);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
+}
+if (cmd == "!add")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateAddDJ(userid);
+}else{
+API.sendChat("Erro " + data.from + ", uso correto: !add @Menção");
+
+}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
