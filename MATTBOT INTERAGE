@@ -1,7 +1,7 @@
 API.chatLog("MATTBOT INTERAGE ON");
 
 mattbot = {
-falaoi: ["oi bot","ola bot","eae bot"],
+falaoi: ["oi bot","ola bot","eae bot","olá bot"],
 respondeoi: [":D Oi",":D Olá"],
 boton: ["bot on?","bot tae?","bot esta ativado?","bot ta ativado?","bot ta on?","bot ligado?"],
 toon: ["Estou aqui"],
@@ -10,6 +10,8 @@ welcomebot: ["Olá, seja bem-vindo a nossa sala. Divirta-se "],
 bomdia: ["bom dia"], bomdiabot: [":D Bom_Dia"],
 boatarde: ["boa tarde"], boatardebot: [":D Boa_Tarde"],
 boanoite: ["boa noite"], boanoitebot: [":D Boa_Noite"],
+huehue: ["hue br","hu3 br","huebr","hu3br"], huehuebot: ["/meHU3_HU3_HU3_HU3_HU3_BR_BR_BR"],
+palavrao: ["filho da puta","seu viado","seu desgraçado","seu bosta","seu idiota","seu porra","caralho","vai se fude","vai toma no","zé buceta","ze buceta","pau no cu","fdp","vsf","tnc","bucetud"],
 //mattadmin: ["515a20e9b3b0b7","515a206a877b9272821f831e"],
 };
 
@@ -55,6 +57,20 @@ for(var i = 0; i < mattbot.boanoite.length; i++){
 if(msg.indexOf(mattbot.boanoite[i].toLowerCase()) > -1){
 var boanoitebotRandom = Math.floor(Math.random() * mattbot.boanoitebot.length);
 API.sendChat(mattbot.boanoitebot[boanoitebotRandom] +" @"+ data.from +" ");
+}
+}
+//huer
+for(var i = 0; i < mattbot.huehue.length; i++){
+if(msg.indexOf(mattbot.huehue[i].toLowerCase()) > -1){
+var huehuebotRandom = Math.floor(Math.random() * mattbot.huehuebot.length);
+API.sendChat(mattbot.huehuebot[huehuebotRandom] +" ");
+}
+}
+//palavrao
+for(var i = 0; i < mattbot.palavrao.length; i++){
+if(msg.indexOf(mattbot.palavrao[i].toLowerCase()) > -1){
+API.moderateDeleteChat(data.chatID);
+API.sendChat("@"+ data.from +" Leia as !regras idiota!");
 }
 }
 });
