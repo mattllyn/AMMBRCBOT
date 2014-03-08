@@ -38,6 +38,7 @@ function chatMe(msg)
 {
 API.sendChat(msg);
 };
+window.setInterval(sendAnnouncement, 1000 * announcementTick);
 ////////////////////////////////////////////////////////////////////////////////
 Matt = {
 comandoslink: "http://goo.gl/QwXE5d",
