@@ -17,6 +17,7 @@ $.getScript("http://pastebin.com/raw.php?i=t1usCNnQ");
 $.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/Games");
 ////////////////////////////////////////////////////////////////////////////////
 //Auto-Chat
+API.sendChat(":white_check_mark: AMMBR Bot ligado. :white_check_mark:");
 ////////////////////////////////////////////////////////////////////////////////
 var users = API.getUsers();
 function getUserID(name) {
@@ -28,12 +29,12 @@ return users[i].id;
 return null;
 }
 
-var comandoslink = "http://goo.gl/QwXE5d";
-var regraslink = "http://goo.gl/i7JUIX";
-
+Matt = {
+comandoslink: "http://goo.gl/QwXE5d",
+regraslink: "http://goo.gl/i7JUIX",
+};
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.CHAT,onChat);
-API.sendChat(":white_check_mark: AMMBR Bot ligado. :white_check_mark:");
 function onChat(data) {
 var message = data.message.toLowerCase();
 ////////////////////////////////////////////////////////////////////////////////
@@ -66,23 +67,7 @@ $("#chat-messages").append("<div class='Blue system'><i class='icon icon-refresh
 location.reload(true);
 }, (1*1000));
 }
-////////////////////////////////////////////////////////////////////////////////
-if (message.indexOf("!desligar") == 0)
-if (API.getUser(data.fromID).permission > 3){
-API.sendChat(":ballot_box_with_check: AMMBR Bot desligado. :ballot_box_with_check:");
-API.off(API.CHAT,onChat);
-API.off(API.CHAT,onChat2);
 
-}
-////////////////////////////////////////////////////////////////////////////////
-if (message.indexOf("!relogar") == 0)
-if (API.getUser(data.fromID).permission > 3){
-API.chatLog("Relogando bot...");
-API.off(API.CHAT,onChat);
-API.off(API.CHAT,onChat2);
-setTimeout(function () {$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/AMMBRCHATBOT");
-}, 1000);
-}
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!limparchat") == 0)
 if (API.getUser(data.fromID).permission > 2){
@@ -112,8 +97,8 @@ if (message.indexOf("!chato") == 0) {
 API.sendChat("@"+ data.from +" não gostou desse seu video de merda @"+ API.getDJ().username +", melhore na proxima! :-1: :broken_heart: ");
 }
 ////////////////////////////////////////////////////////////////////////////////
-if (message.indexOf("!comandos") == 0) API.sendChat("/me["+data.from+"] Clique no link para ver os comandos: "+comandoslink+" !");
-if (message.indexOf("!regras") == 0 || message.indexOf("!temas") == 0) API.sendChat("/me["+data.from+"] Clique no link para ver as regras e os temas: "+regraslink+" !");
+if (message.indexOf("!comandos") == 0) API.sendChat("/me["+data.from+"] Clique no link para ver os comandos: "+Matt.comandoslink+" !");
+if (message.indexOf("!regras") == 0 || message.indexOf("!temas") == 0) API.sendChat("/me["+data.from+"] Clique no link para ver as regras e os temas: "+Matt.regraslink+" !");
 if (message.indexOf("!fb") == 0) API.sendChat("/me:star2: Curta nosso facebook: http://migre.me/hG4pT ");
 if (message.indexOf("!adblock") == 0) API.sendChat("/me:star2: Para remover as propagandas dos videos use AdBlock > http://www.adblockplus.org/");
 if (message.indexOf("!autowoot") == 0) API.sendChat("/me:star2: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
