@@ -63,6 +63,7 @@ API.moderateForceSkip();
 if (message.indexOf("!f5") == 0)
 if (API.getUser(data.fromID).permission > 3){
 setTimeout(function() {
+API.sendChat("/me["+data.from+"] Atualizando a página... Bye");
 $("#chat-messages").append("<div class='Blue system'><i class='icon icon-refresh-video'></i><span class='text'> Atualizando a página...</span></div>");
 location.reload(true);
 }, (1*1000));
