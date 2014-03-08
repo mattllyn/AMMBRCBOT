@@ -7,6 +7,8 @@ $.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/BGsPS");
 $.getScript("http://pastebin.com/raw.php?i=t1usCNnQ"); 
 //Games
 $.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/Games");
+//Mattbot Interage
+$.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/MATTBOT%20INTERAGE");
 ////////////////////////////////////////////////////////////////////////////////
 //Auto-Chat
 API.sendChat(":white_check_mark: AMMBR-BOT Ligado. :white_check_mark:");
