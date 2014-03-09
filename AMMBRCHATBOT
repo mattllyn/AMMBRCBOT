@@ -124,7 +124,7 @@ comandoslink: "http://goo.gl/QwXE5d",
 regraslink: "http://goo.gl/i7JUIX",
 };
 ////////////////////////////////////////////////////////////////////////////////
-mendigos = {
+/*mendigos = {
 fan: [
 "fan me", "fun me", "become my fan", "troco fa", "fan for fan", "fan 4 fan", "fan4fan", "add me as a fan",
 "fun4fun", "fun 4 fun", "meu fa", "is now your fan", "reciprocate", "fans me", "give fan", "add as fan",
@@ -147,7 +147,7 @@ fan: [
 "sejam meus fa", "be fan of me", "fan in fan", "add to fan", "fan this account", "fans for fan",
 "fan my account", "fan back", "add me for fan","fans 4 fan", "fans4fan", "fanme", "turn fan who contribute"
 ],
-};
+};*/
 ////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +285,7 @@ if (API.getUser(data.fromID).permission > 1){
 API.moderateAddDJ(userid);
 }
 }
-
+/*
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.CHAT, function(data){
@@ -298,5 +298,5 @@ r = Math.floor(Math.random() * responses.length);
 API.sendChat(responses[r].replace("{beggar}", data.from));
 }
 }
-});
+});*/
 ////////////////////////////////////////////////////////////////////////////////
