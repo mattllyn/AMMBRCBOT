@@ -1,5 +1,5 @@
 API.chatLog("BGs on!",true);
-$("#chat-messages").append("<div class='skip'><i class='icon icon-active-rollover'></i><span class='text'>Planos de Fundo script ativado! use /cmdsbg</span></div>");
+$("#chat-messages").append("<div class='skip'></i><span class='text'>Planos de Fundo script ativado! use /cmdsbg</span></div>");
 
 $("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
 $("#playback .background").hide();
