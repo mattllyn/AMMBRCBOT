@@ -22,6 +22,83 @@ return users[i].id;
 }
 return null;
 }
+
+a = {
+blockskip: "on",
+};
+////////////////////////////////////////////////////////////////////////////////
+
+var blockedSongs = [
+    "Rick Roll",
+    "tuts tuts",
+    "tuts, tuts","Tuts, Tuts","Quero Ver","Quero ver",
+    "The Fox","Caralho","caralho",
+    "10 horas","10 Horas",
+    "10 hour","10 Hour",
+    "Trololo","Full Album","full album","Full album",
+    "funk","Funk",
+    "jailson","Jailson",
+    "cristão","Cristão",
+    "tem pão","Tem Pão","Tem pão",
+    "Justin Bieber","KID BENGALA","Kid bengala","Kid Bengala",
+    "Lil wayne",
+    "edy lemmond","Edy Lemmond","Edy Lemond","edy lemond",
+    "valesca","Valesca",
+    "eminem","Eminem",
+    "mc wiil","Mc Wiil",
+    "mc carol","Mc Carol",
+    "mc mayara","Mc Mayara",
+    "bonde do tigrão","Bonde do tigrão","Bonde do Tigrão","Tigrao","tigrao"
+];
+
+var blockedArtists = [
+    "Rick Astley",
+    "Miley Cyrus",
+    "Eduard Khil",
+    "Justin Bieber","KID BENGALA","Kid bengala","Kid Bengala",
+    "Lil wayne",
+    "edy lemmond","Edy Lemmond","Edy Lemond","edy lemond",
+    "valesca","Valesca",
+    "eminem","Eminem",
+    "mc wiil","Mc Wiil",
+    "mc carol","Mc Carol",
+    "mc mayara","Mc Mayara",
+    "bonde do tigrão","Bonde do tigrão","Bonde do Tigrão","Tigrao","tigrao",
+    "tuts tuts",
+    "tuts, tuts","Tuts, Tuts","Quero Ver","Quero ver",
+    "The Fox","Caralho","caralho",
+    "10 horas","10 Horas",
+    "10 hour","10 Hour",
+    "Trololo","Full Album","full album","Full album",
+    "buceta","Buceta",
+    "funk","Funk",
+    "jailson","Jailson",
+    "cristão","Cristão",
+    "tem pão","Tem Pão","Tem pão"
+];
+////////////////////////////////////////////////////////////////////////////////
+API.on(API.DJ_ADVANCE, listener);
+function listener(data)
+{
+if (data == null)
+{
+return;
+}
+
+var title = data.media.title;
+var author = data.media.author;
+for (var i = 0; i < blockedSongs.length; i++)
+{
+if (a.blockskip === "on") {
+if (title.indexOf(blockedSongs[i]) != -1 || author.indexOf(blockedArtists[i]) != -1)
+{
+API.moderateForceSkip();
+chatMe(title +" : contra as regras e/ou fora dos temas permitidos!");
+return;
+}
+}
+}
+}
 ////////////////////////////////////////////////////////////////////////////////
 var announcementTick = 60 * 10;
 var lastAnnouncement = 0;
@@ -72,9 +149,12 @@ fan: [
 ],
 };
 ////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
 API.on(API.CHAT,onChat);
 function onChat(data) {
 var message = data.message.toLowerCase();
+
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!") == 0) {
 API.moderateDeleteChat(data.chatID);
@@ -105,7 +185,19 @@ $("#chat-messages").append("<div class='Blue system'><i class='icon icon-refresh
 location.reload(true);
 }, (1*1000));
 }
-
+var msg = data.message;
+var arg1 = msg.split(" ")[1];
+if (message.indexOf("!video") == 0)
+if (API.getUser(data.fromID).permission > 1){
+if (arg1 === "on") {
+a.blockskip = "on";
+API.sendChat("/meVideos bloqueados ativados!");
+}
+if (arg1 === "off") {
+a.blockskip = "off";
+API.sendChat("/meVideos bloqueados desativados!");
+}
+}
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!limparchat") == 0)
 if (API.getUser(data.fromID).permission > 2){
