@@ -26,7 +26,7 @@ return null;
 var announcementTick = 60 * 10;
 var lastAnnouncement = 0;
 var announcements =
-["/meAMMBR-BOT: Use Auto-Woot para não ser removido da lista de espera. :+1:","/meAdicione nossa sala aos seus favoritos!!! :D"];
+["/meUse Auto-Woot para não ser removido da lista de espera. :+1:","/meAdicione nossa sala aos seus favoritos!!! :D"];
 function sendAnnouncement()
 {
 if (lastAnnouncement++ >= announcements.length - 1)
