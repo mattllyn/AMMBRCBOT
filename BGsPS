@@ -1,12 +1,11 @@
 API.chatLog("BGs on!",true);
-$("#chat-messages").append("<div class='system'><i class='icon icon-active-rollover'></i><span class='text'>Planos de Fundo script ativado!</span></div>");
-$("#chat-messages").append("<div class='LGreen system'></i><span class='text'>Para mudar o plando de fundo digite: /bg1 a 8<br/>Exemplo: /bg1, /bg2... <br/>Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg <br/>Para ativar/desativar as cores digite: /coreson /coresoff <br/>Para ver essa mensagem novamente digite: /comandosbg ou /cmdsbg</span></div>");
-$("#chat-messages").append("<div class='system'></i><span class='text'>BGs por: PlugStation.  Todos os direitos reservados.</span></div>");
+$("#chat-messages").append("<div class='system'><i class='icon icon-active-rollover'></i><span class='text'>Planos de Fundo script ativado! use /cmdsbg</span></div>");
 
 $("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 $(".item.s-av.selected").click();
+//verde
 $("span.username").css("color", "#32CD32");
 $("#room-name").css("color", "#32CD32");
 $("#now-playing-media").css("color", "#32CD32");
@@ -28,52 +27,53 @@ cmd = value.split(" ");
 
 if (cmd[0] == "/comandosbg" || cmd[0] == "/cmdsbg"){
 $("#chat-messages").append("<div class='system'></i><span class='text'>Planos de Fundo, Comandos e Informações:</span></div>");
-$("#chat-messages").append("<div class='LGreen system'></i><span class='text'>Para mudar o plando de fundo digite: /bg1 a 8<br/>Exemplo: /bg1, /bg2... <br/>Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg <br/>Para ativar/desativar as cores digite: /coreson /coresoff <br/>Para ver essa mensagem novamente digite: /comandosbg ou /cmdsbg</span></div>");
+$("#chat-messages").append("<div class='skip'></i><span class='text'>Para mudar o plando de fundo digite: /bg1 a 8<br/>Exemplo: /bg1, /bg2... <br/>Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg <br/>Para desativar as cores digite: /coresoff <br/>Para mudar as cores digite: /colorido /corverde /corvermelho /corazul /coramarelo /corrosa /corlaranja</span></div>");
+$("#chat-messages").append("<div class='skip'></i><span class='text'>BGs por: PlugStation.  Todos os direitos reservados.</span></div>");
 }
 if (cmd[0] == "/bg1"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 1: Skygazer Theme.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 1: Skygazer Theme.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/N82wzhY.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg2"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 2: Castleland (by Dionysu5).</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 2: Castleland (by Dionysu5).</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/jNRQXKZ.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg3"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 3: End of Line Club.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 3: End of Line Club.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/6N7svVu.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg4"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 4: Fairy Tale Land.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 4: Fairy Tale Land.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg5"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 5: Architect Chamber.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 5: Architect Chamber.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/8hfUntO.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg6"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 6: Ancient Ruins.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 6: Ancient Ruins.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/HG8mqaM.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg7"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 7: Digital Dungeon Theme.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 7: Digital Dungeon Theme.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/WTylHRy.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg8"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 8: TT.fm After Party Theme.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Plano de Fundo 8: TT.fm After Party Theme.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/GZKgCpk.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
@@ -85,7 +85,7 @@ $("body").css("background-position", "(-332.5px 45px)");
 $("body").css("background-repeat", "(no-repeat no-repeat)");
 }
 if (cmd[0] == "/desativarbg"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Planos de Fundo script desativado.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Planos de Fundo script desativado.</span></div>");
 API.off(API.CHAT_COMMAND, command);
 $("body").css("background-image", "url(http://plug.dj/_/static/images/background.cd89e94.jpg)");
 $("body").css("background-color", "rgb(0, 0, 0)");
@@ -101,8 +101,20 @@ $("#volume").css("color", "#FFFFFF");
 $("#now-playing-time").css("color", "#FFFFFF");
 $("#user-meta").css("color", "#FFFFFF");
 }
-if (cmd[0] == "/coreson"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Cores ativadas.</span></div>");
+
+if (cmd[0] == "/colorido"){
+$("span.username").css("color", "#32CD32");
+$("#room-name").css("color", "yellow");
+$("#now-playing-media").css("color", "blue");
+$("#hit").css("color", "yellow");
+$("#next-media-title").css("color", "blue");
+$("#header-panel-bar").css("color", "orange");
+$("#volume").css("color", "red");
+$("#now-playing-time").css("color", "#32CD32");
+$("#user-meta").css("color", "pink");
+}
+//verde
+if (cmd[0] == "/corverde"){
 ("span.username").css("color", "#32CD32");
 $("#room-name").css("color", "#32CD32");
 $("#now-playing-media").css("color", "#32CD32");
@@ -113,8 +125,68 @@ $("#volume").css("color", "#32CD32");
 $("#now-playing-time").css("color", "#32CD32");
 $("#user-meta").css("color", "#32CD32");
 }
+//vermelho
+if (cmd[0] == "/corvermelho"){
+$("span.username").css("color", "red");
+$("#room-name").css("color", "red");
+$("#now-playing-media").css("color", "red");
+$("#hit").css("color", "red");
+$("#next-media-title").css("color", "red");
+$("#header-panel-bar").css("color", "red");
+$("#volume").css("color", "red");
+$("#now-playing-time").css("color", "red");
+$("#user-meta").css("color", "red");
+}
+//azul
+if (cmd[0] == "/corazul"){
+$("span.username").css("color", "blue");
+$("#room-name").css("color", "blue");
+$("#now-playing-media").css("color", "blue");
+$("#hit").css("color", "blue");
+$("#next-media-title").css("color", "blue");
+$("#header-panel-bar").css("color", "blue");
+$("#volume").css("color", "blue");
+$("#now-playing-time").css("color", "blue");
+$("#user-meta").css("color", "blue");
+}
+//amarelo
+if (cmd[0] == "/coramarelo"){
+$("span.username").css("color", "yellow");
+$("#room-name").css("color", "yellow");
+$("#now-playing-media").css("color", "yellow");
+$("#hit").css("color", "yellow");
+$("#next-media-title").css("color", "yellow");
+$("#header-panel-bar").css("color", "yellow");
+$("#volume").css("color", "yellow");
+$("#now-playing-time").css("color", "yellow");
+$("#user-meta").css("color", "yellow");
+}
+//rosa
+if (cmd[0] == "/corrosa"){
+$("span.username").css("color", "pink");
+$("#room-name").css("color", "pink");
+$("#now-playing-media").css("color", "pink");
+$("#hit").css("color", "pink");
+$("#next-media-title").css("color", "pink");
+$("#header-panel-bar").css("color", "pink");
+$("#volume").css("color", "pink");
+$("#now-playing-time").css("color", "pink");
+$("#user-meta").css("color", "pink");
+}
+//laranja
+if (cmd[0] == "/corlaranja"){
+$("span.username").css("color", "orange);
+$("#room-name").css("color", "orange");
+$("#now-playing-media").css("color", "orange");
+$("#hit").css("color", "orange");
+$("#next-media-title").css("color", "orange");
+$("#header-panel-bar").css("color", "orange");
+$("#volume").css("color", "orange");
+$("#now-playing-time").css("color", "orange");
+$("#user-meta").css("color", "orange");
+}
 if (cmd[0] == "/coresoff"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Cores desativadas.</span></div>");
+$("#chat-messages").append("<div class='system'></i><span class='text'>Cores desativadas.</span></div>");
 $("span.username").css("color", "#FFFFFF");
 $("#room-name").css("color", "#FFFFFF");
 $("#now-playing-media").css("color", "#FFFFFF");
