@@ -5,18 +5,66 @@ falaoi: ["oi bot","ola bot","eae bot","olá bot"],
 respondeoi: [":D Oi",":D Olá"],
 boton: ["bot on?","bot tae?","bot esta ativado?","bot ta ativado?","bot ta on?","bot ligado?"],
 toon: ["Estou aqui"],
-olapessoas: ["oi gente","yo minna","ola pessoas","eae galera","oi galera","eae gente","ola galera","yo galera","yo gente","oi pessoas"],
+olapessoas: ["oi gente","yo minna","ola pessoas","ola gente","eae galera","oi galera","eae gente","ola galera","yo galera","yo gente","oi pessoas","oi pessoal","oi minna"],
 welcomebot: ["Olá, seja bem-vindo a nossa sala. Divirta-se "],
-bomdia: ["bom dia"], bomdiabot: [":D Bom_Dia"],
-boatarde: ["boa tarde"], boatardebot: [":D Boa_Tarde"],
-boanoite: ["boa noite"], boanoitebot: [":D Boa_Noite"],
-huehue: ["hue br","hu3 br","huebr","hu3br"], huehuebot: ["/meHU3_HU3_HU3_HU3_HU3_BR_BR_BR"],
-palavrao: ["filho da puta","seu viado","seu desgraçado","seu bosta","seu idiota","seu porra","caralho","vai se fude","vai toma no","zé buceta","ze buceta","pau no cu","fdp","vsf","tnc","bucetud"],
-//mattadmin: ["515a20e9b3b0b7","515a206a877b9272821f831e"],
+bomdia: ["bom dia"], bomdiabot: [":D Bom  Dia"],
+boatarde: ["boa tarde"], boatardebot: [":D Boa  Tarde"],
+boanoite: ["boa noite"], boanoitebot: [":D Boa  Noite"],
+huehue: ["hue br","hu3 br","huebr","hu3br","huehue","hu3hu3"], huehuebot: ["/me I'm BR HUEHU3HUEHU3"],
+palavrao: ["puta","seu viado","seu desgraçado","seu bosta","seu idiota","seu porra","seu merda","caralho","vai se fude","vai toma no","zé buceta","ze buceta","pau no cu","fdp","vsf","tnc","bucetud"],
+comandoslink: ["Link dos comandos: http://goo.gl/QwXE5d"], clink: ["qual sao os comandos bot","link dos comandos bot","comandos da sala bot","qual são os comandos bot"],
+regraslink: ["Link das regras: http://goo.gl/i7JUIX"], rlink: ["qual sao as regras bot","link das regras bot","regras da sala bot","qual são as regras bot"],
+autowootlink: ["Como usar Auto-Woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Como usar Auto-Woot em texto PT-BR > http://goo.gl/YcXZLw"],
+awlink: ["link do autowoot bot","como usar autowoot","o que é autowoot","como usa o autowoot"],
 };
+/*
+Dialogos do bot:
+"Oi, Ola Bot
+"Bot On?, Ligado?, Tae?
+"Oi gente, galera, pessoal, pessoas
+"Ola gente, galera, pessoal, pessoas
+"Yo minna, gente, pessoal
+"Eae gente, galera
+Bom dia, Boa tarde, Boa noite
+Qual os comandos bot?, link dos comandos bot?, comandos da sala bot?
+Qual são as regras bot?, link das regras bot?, regras da sala bot?
+Link do autowoot bot?,  como usar autowoot?
 
+Exemplo:
+oi bot
+bot ligado?
+oi galera
+bom dia
+comandos da sala bot?
+regras da sala bot?
+como usar autowoot?
+
+OBS: Apenas digite normalmete no chat da sala.
+*/
 API.on(API.CHAT, function(data){
 msg = data.message.toLowerCase();
+
+//Autowoot Link
+for(var i = 0; i < mattbot.awlink.length; i++){
+if(msg.indexOf(mattbot.awlink[i].toLowerCase()) > -1){
+var autowootlinkRandom = Math.floor(Math.random() * mattbot.autowootlink.length);
+API.sendChat(mattbot.autowootlink[autowootlinkRandom] +" @"+ data.from +" ");
+}
+}
+//Comandos Link
+for(var i = 0; i < mattbot.clink.length; i++){
+if(msg.indexOf(mattbot.clink[i].toLowerCase()) > -1){
+var comandoslinkRandom = Math.floor(Math.random() * mattbot.comandoslink.length);
+API.sendChat(mattbot.comandoslink[comandoslinkRandom] +" @"+ data.from +" ");
+}
+}
+//Regras Link
+for(var i = 0; i < mattbot.rlink.length; i++){
+if(msg.indexOf(mattbot.rlink[i].toLowerCase()) > -1){
+var regraslinkRandom = Math.floor(Math.random() * mattbot.regraslink.length);
+API.sendChat(mattbot.regraslink[regraslinkRandom] +" @"+ data.from +" ");
+}
+}
 //Oi
 for(var i = 0; i < mattbot.falaoi.length; i++){
 if(msg.indexOf(mattbot.falaoi[i].toLowerCase()) > -1){
