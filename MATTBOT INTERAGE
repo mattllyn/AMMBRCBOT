@@ -11,36 +11,13 @@ bomdia: ["bom dia"], bomdiabot: [":D Bom  Dia"],
 boatarde: ["boa tarde"], boatardebot: [":D Boa  Tarde"],
 boanoite: ["boa noite"], boanoitebot: [":D Boa  Noite"],
 huehue: ["hue br","hu3 br","huebr","hu3br","huehue","hu3hu3"], huehuebot: ["/me I'm BR HUEHU3HUEHU3"],
-palavrao: ["puta","seu viado","seu desgraçado","seu bosta","seu idiota","seu porra","seu merda","caralho","vai se fude","vai toma no","zé buceta","ze buceta","pau no cu","fdp","vsf","tnc","bucetud"],
+//palavrao: ["puta","seu viado","seu desgraçado","seu bosta","seu idiota","seu porra","seu merda","caralho","vai se fude","vai toma no","zé buceta","ze buceta","pau no cu","fdp","vsf","tnc","bucetud"],
 comandoslink: ["Link dos comandos: http://goo.gl/QwXE5d"], clink: ["qual sao os comandos bot","link dos comandos bot","comandos da sala bot","qual são os comandos bot"],
 regraslink: ["Link das regras: http://goo.gl/i7JUIX"], rlink: ["qual sao as regras bot","link das regras bot","regras da sala bot","qual são as regras bot"],
 autowootlink: ["Como usar Auto-Woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Como usar Auto-Woot em texto PT-BR > http://goo.gl/YcXZLw"],
 awlink: ["link do autowoot bot","como usar autowoot","o que é autowoot","como usa o autowoot"],
 };
-/*
-Dialogos do bot:
-"Oi, Ola Bot
-"Bot On?, Ligado?, Tae?
-"Oi gente, galera, pessoal, pessoas
-"Ola gente, galera, pessoal, pessoas
-"Yo minna, gente, pessoal
-"Eae gente, galera
-Bom dia, Boa tarde, Boa noite
-Qual os comandos bot?, link dos comandos bot?, comandos da sala bot?
-Qual são as regras bot?, link das regras bot?, regras da sala bot?
-Link do autowoot bot?,  como usar autowoot?
 
-Exemplo:
-oi bot
-bot ligado?
-oi galera
-bom dia
-comandos da sala bot?
-regras da sala bot?
-como usar autowoot?
-
-OBS: Apenas digite normalmete no chat da sala.
-*/
 API.on(API.CHAT, function(data){
 msg = data.message.toLowerCase();
 
@@ -114,11 +91,11 @@ var huehuebotRandom = Math.floor(Math.random() * mattbot.huehuebot.length);
 API.sendChat(mattbot.huehuebot[huehuebotRandom] +" ");
 }
 }
-//palavrao
+/*//palavrao
 for(var i = 0; i < mattbot.palavrao.length; i++){
 if(msg.indexOf(mattbot.palavrao[i].toLowerCase()) > -1){
 API.moderateDeleteChat(data.chatID);
 API.sendChat("@"+ data.from +" Leia as !regras idiota!");
 }
-}
+}*/
 });
