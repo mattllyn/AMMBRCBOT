@@ -13,15 +13,6 @@ $.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/MATTBOT%20INTERAGE
 //Auto-Chat
 API.sendChat(":white_check_mark: AMMBR-BOT Ligado. :white_check_mark:");
 ////////////////////////////////////////////////////////////////////////////////
-var users = API.getUsers();
-function getUserID(name) {
-for (var i in users) {
-if (users[i].username == name) {
-return users[i].id;
-}
-}
-return null;
-}
 
 a = {
 blockskip: "on",
@@ -249,6 +240,17 @@ API.sendChat("@"+data.from+" "+tracks[0].permalink_url);
 }
 }
 ////////////////////////////////////////////////////////////////////////////////
+var users = API.getUsers();
+function getUserID(name) {
+for (var i in users) {
+if (users[i].username == name) {
+return users[i].id;
+}
+}
+return null;
+}
+
+
 API.on(API.CHAT,onChat2);
 function onChat2(data) {
 var message = "";
@@ -267,7 +269,10 @@ var message = "";
     var argname = arg1.slice(1, arg1.length);
 	var userid = getUserID(argname);
 
-
+if (cmd == "!add")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateAddDJ(userid);
+}
 if (cmd == "!banir")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateBanUser(userid, 0, API.BAN.HOUR);
@@ -280,11 +285,8 @@ if (cmd == "!rmv")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateRemoveDJ(userid);
 }
-if (cmd == "!add")
-if (API.getUser(data.fromID).permission > 1){
-API.moderateAddDJ(userid);
 }
-}
+
 /*
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
