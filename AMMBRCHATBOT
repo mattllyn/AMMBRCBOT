@@ -222,7 +222,7 @@ if (message.indexOf("!comandos") == 0) API.sendChat("/me["+data.from+"] Clique n
 if (message.indexOf("!regras") == 0 || message.indexOf("!temas") == 0) API.sendChat("/me["+data.from+"] Clique no link para ver as regras e os temas: "+Matt.regraslink+" !");
 if (message.indexOf("!fb") == 0) API.sendChat("/me:star2: Curta nosso facebook: http://migre.me/hG4pT ");
 if (message.indexOf("!adblock") == 0) API.sendChat("/me:star2: Para remover as propagandas dos videos use AdBlock > http://www.adblockplus.org/");
-if (message.indexOf("!autowoot") == 0) API.sendChat("/me:star2: Tutorial Auto-woot Video > http://youtu.be/2d5ApIHKvYY (pls 720p). Tutorial em texto PT-BR > http://goo.gl/YcXZLw");
+if (message.indexOf("!autowoot") == 0) API.sendChat("/me:star2: Tutorial Auto-woot Video > http://youtu.be/RXvdBZ8ADyQ ");
 if (message.indexOf("!blog") == 0) API.sendChat("/me:star2: Acesse nosso blog > http://www.ammbr.com.br/");
 if (message.indexOf("!yt") == 0) API.sendChat("/me:star2: Acesse nosso canal no Youtube > https://www.youtube.com/TheAmmbr");
 if (message.indexOf("!rules") == 0) API.sendChat("/me:star2: To see the rules > http://goo.gl/Z5dgvI");
