@@ -113,6 +113,7 @@ window.setInterval(sendAnnouncement, 1000 * announcementTick);
 Matt = {
 comandoslink: "http://goo.gl/QwXE5d",
 regraslink: "http://goo.gl/i7JUIX",
+contatolink: "http://goo.gl/LccZ6t",
 };
 ////////////////////////////////////////////////////////////////////////////////
 /*mendigos = {
@@ -226,6 +227,7 @@ if (message.indexOf("!autowoot") == 0) API.sendChat("/me:star2: Tutorial Auto-wo
 if (message.indexOf("!blog") == 0) API.sendChat("/me:star2: Acesse nosso blog > http://www.ammbr.com.br/");
 if (message.indexOf("!yt") == 0) API.sendChat("/me:star2: Acesse nosso canal no Youtube > https://www.youtube.com/TheAmmbr");
 if (message.indexOf("!rules") == 0) API.sendChat("/me:star2: To see the rules > http://goo.gl/Z5dgvI");
+if (message.indexOf("!contato") == 0) API.sendChat("/me:star2: Acesse o link "+contatolink+", e veja um meio mais facil de entrar em contato com um moderador chefe.");
 //if (message.indexOf("! ") == 0) API.sendChat(" ");
     
 ////////////////////////////////////////////////////////////////////////////////
