@@ -20,7 +20,7 @@ blockskip: "on",
 ////////////////////////////////////////////////////////////////////////////////
 
 var blockedSongs = [
-    "Rick Roll",
+    "Rick Roll","Ecchi","ecchi","ECCHI",
     "tuts tuts",
     "tuts, tuts","Tuts, Tuts","Quero Ver","Quero ver",
     "The Fox","Caralho","caralho",
@@ -43,7 +43,7 @@ var blockedSongs = [
 ];
 
 var blockedArtists = [
-    "Rick Astley",
+    "Rick Astley","Ecchi","ecchi","ECCHI",
     "Miley Cyrus",
     "Eduard Khil",
     "Justin Bieber","KID BENGALA","Kid bengala","Kid Bengala",
@@ -178,8 +178,8 @@ location.reload(true);
 }
 var msg = data.message;
 var arg1 = msg.split(" ")[1];
-if (message.indexOf("!video") == 0)
-if (API.getUser(data.fromID).permission > 1){
+if (message.indexOf("!putaria") == 0)
+if (API.getUser(data.fromID).permission > 2){
 if (arg1 === "on") {
 a.blockskip = "on";
 API.sendChat("/meVideos bloqueados ativados!");
