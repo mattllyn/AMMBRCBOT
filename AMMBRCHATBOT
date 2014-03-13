@@ -94,7 +94,7 @@ return;
 var announcementTick = 60 * 10;
 var lastAnnouncement = 0;
 var announcements =
-["/meUse Auto-Woot para não ser removido da lista de espera. :+1:","/meAdicione nossa sala aos seus favoritos!!! :D"];
+["/meUse Auto-Woot para não ser removido da lista de espera. :+1:","/meAdicione nossa sala aos seus favoritos!!! :D","Leia as regras, evite ser pulado ou banido da sala! :green_heart:"];
 function sendAnnouncement()
 {
 if (lastAnnouncement++ >= announcements.length - 1)
