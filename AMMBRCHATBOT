@@ -20,7 +20,7 @@ blockskip: "on",
 ////////////////////////////////////////////////////////////////////////////////
 
 var blockedSongs = [
-    "Rick Roll","Ecchi","ecchi","ECCHI",
+    "Rick Roll","Ecchi","ecchi","ECCHI","yuri","Yuri","YURI","yaoi","Yaoi","YAOI",
     "tuts tuts",
     "tuts, tuts","Tuts, Tuts","Quero Ver","Quero ver",
     "The Fox","Caralho","caralho",
@@ -43,7 +43,7 @@ var blockedSongs = [
 ];
 
 var blockedArtists = [
-    "Rick Astley","Ecchi","ecchi","ECCHI",
+    "Rick Astley","Ecchi","ecchi","ECCHI","yuri","Yuri","YURI","yaoi","Yaoi","YAOI",
     "Miley Cyrus",
     "Eduard Khil",
     "Justin Bieber","KID BENGALA","Kid bengala","Kid Bengala",
