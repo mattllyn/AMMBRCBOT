@@ -23,59 +23,54 @@ API.on(API.CHAT_COMMAND, command);
 function command(value) {
 cmd = value.split(" ");
 if (cmd[0] == "/comandosbg" || cmd[0] == "/cmdsbg"){
-API.chatLog("Planos de Fundo, Comandos e Informações:",true);
-API.chatLog("Para mudar o plando de fundo digite: /bg1 a 8");
-API.chatLog("Exemplo: /bg1, /bg2...");
-API.chatLog("Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg");
-API.chatLog("Para desativar as cores digite: /coresoff");
-API.chatLog("Para mudar as cores digite: /colorido /corverde /corvermelho /corazul /coramarelo /corrosa /corlaranja");
+$("#chat-messages").append("<div class='skip'></i><span class='text'>Planos de Fundo, Comandos e Informações:</span></div>");
+$("#chat-messages").append("<div class='skip'></i><span class='text'>Para mudar o plando de fundo digite: /bg1 a 8<br/>Exemplo: /bg1, /bg2... <br/>Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg <br/>Para desativar as cores digite: /coresoff <br/>Para mudar as cores digite: /colorido /corverde /corvermelho /corazul /coramarelo /corrosa /corlaranja</span></div>");
 $("#chat-messages").append("<div class='skip'></i><span class='text'>BGs por: PlugStation.  Todos os direitos reservados.</span></div>");
 }
 if (cmd[0] == "/bg1"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 1: Skygazer Theme.</span></div>");
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 1: Skygazer Theme.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/N82wzhY.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg2"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 2: Castleland (by Dionysu5).</span></div>");
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 2: Castleland (by Dionysu5).</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/jNRQXKZ.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg3"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 3: End of Line Club.</span></div>");
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 3: End of Line Club.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/6N7svVu.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg4"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 4: Fairy Tale Land.</span></div>");
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 4: Fairy Tale Land.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg5"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 5: Architect Chamber.</span></div>");
-$("#chat-messages").scrollTop($("#chat-messages div.message").last().position().top-$("#chat-messages div.message").first().position().top+100);
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 5: Architect Chamber.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/8hfUntO.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg6"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 6: Ancient Ruins.</span></div>");
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 6: Ancient Ruins.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/HG8mqaM.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg7"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 7: Digital Dungeon Theme.</span></div>");
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 7: Digital Dungeon Theme.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/WTylHRy.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg8"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 8: TT.fm After Party Theme.</span></div>");
+//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 8: TT.fm After Party Theme.</span></div>");
 $("body").css("background-image", "url(http://i.imgur.com/GZKgCpk.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
@@ -88,7 +83,6 @@ $("body").css("background-repeat", "(no-repeat no-repeat)");
 }
 ////////////////////////////////////////////////////////////////////////////////
 if (cmd[0] == "/desativarbg"){
-$("#chat-messages").append("<div class='system'></i><span class='text'>Planos de Fundo script desativado.</span></div>");
 API.off(API.CHAT_COMMAND, command);
 $("body").css("background-image", "url(http://plug.dj/_/static/images/background.cd89e94.jpg)");
 $("body").css("background-color", "rgb(0, 0, 0)");
@@ -189,8 +183,6 @@ $("#now-playing-time").css("color", "orange");
 $("#user-meta").css("color", "orange");
 }
 if (cmd[0] == "/coresoff"){
-$("#chat-messages").append("<div class='system'></i><span class='text'>Cores desativadas.</span></div>");
-$("#chat-messages").scrollTop($("#chat-messages div.message").last().position().top-$("#chat-messages div.message").first().position().top+100);
 $("span.username").css("color", "#FFFFFF");
 $("#room-name").css("color", "#FFFFFF");
 $("#now-playing-media").css("color", "#FFFFFF");
@@ -207,8 +199,6 @@ function ativarr(value) {
 cmd = value.split(" ");
 
 if (cmd[0] == "/ativarbg"){
-$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Planos de Fundo script ativado novamente.</span></div>");
-$("#chat-messages").scrollTop($("#chat-messages div.message").last().position().top-$("#chat-messages div.message").first().position().top+100);
 API.on(API.CHAT_COMMAND, command);
 $("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
 $("#playback .background").hide();
