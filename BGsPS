@@ -1,4 +1,5 @@
-API.chatLog("Planos de Fundo script ativado! use /cmdsbg",true);
+var a = $('#chat-messages'),b = a.scrollTop() > a[0].scrollHeight - a.height() - 20;
+
 $("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
@@ -18,6 +19,8 @@ var style = document.createElement('style');
 style.type = 'text/css';style.innerHTML = '.LGreen { color: rgb(124, 252, 0)!important;border-left: rgb(124, 252, 0) 3px solid!important; }'; //verded
 document.getElementsByTagName('head')[0].appendChild(style);
 
+$("#chat-messages").append("<div class='LGreen system'></i><span class='text'> Planos de Fundo script ativado! use /cmdsbg </span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 
 API.on(API.CHAT_COMMAND, command);
 function command(value) {
@@ -26,51 +29,60 @@ if (cmd[0] == "/comandosbg" || cmd[0] == "/cmdsbg"){
 $("#chat-messages").append("<div class='skip'></i><span class='text'>Planos de Fundo, Comandos e Informações:</span></div>");
 $("#chat-messages").append("<div class='skip'></i><span class='text'>Para mudar o plando de fundo digite: /bg1 a 8<br/>Exemplo: /bg1, /bg2... <br/>Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg <br/>Para desativar as cores digite: /coresoff <br/>Para mudar as cores digite: /colorido /corverde /corvermelho /corazul /coramarelo /corrosa /corlaranja</span></div>");
 $("#chat-messages").append("<div class='skip'></i><span class='text'>BGs por: PlugStation.  Todos os direitos reservados.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 }
 if (cmd[0] == "/bg1"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 1: Skygazer Theme.</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 1: Skygazer Theme.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/N82wzhY.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg2"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 2: Castleland (by Dionysu5).</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 2: Castleland (by Dionysu5).</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/jNRQXKZ.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg3"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 3: End of Line Club.</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 3: End of Line Club.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/6N7svVu.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg4"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 4: Fairy Tale Land.</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 4: Fairy Tale Land.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/XZNVZmj.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg5"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 5: Architect Chamber.</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 5: Architect Chamber.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/8hfUntO.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg6"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 6: Ancient Ruins.</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 6: Ancient Ruins.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/HG8mqaM.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg7"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 7: Digital Dungeon Theme.</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 7: Digital Dungeon Theme.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/WTylHRy.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
 if (cmd[0] == "/bg8"){
-//$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 8: TT.fm After Party Theme.</span></div>");
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 8: TT.fm After Party Theme.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
 $("body").css("background-image", "url(http://i.imgur.com/GZKgCpk.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
