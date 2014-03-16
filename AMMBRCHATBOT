@@ -16,6 +16,7 @@ API.sendChat(":white_check_mark: AMMBR-BOT Ligado. :white_check_mark:");
 
 a = {
 blockskip: "on",
+rdjpromo: "off",
 };
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -88,6 +89,13 @@ chatMe(title +" : contra as regras e/ou fora dos temas permitidos!");
 return;
 }
 }
+}
+}
+////////////////////////////////////////////////////////////////////////////////
+API.on(API.USER_JOIN, UserJoin2);
+if (a.rdjpromo === "on") {
+function UserJoin2(user){
+API.moderateSetRole(user.id, API.ROLE.RESIDENTDJ);
 }
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -188,6 +196,19 @@ API.sendChat("/meVideos bloqueados ativados!");
 if (arg1 === "off") {
 a.blockskip = "off";
 API.sendChat("/meVideos bloqueados desativados!");
+}
+}
+var msg = data.message;
+var arg1 = msg.split(" ")[1];
+if (message.indexOf("!rdjpromo") == 0)
+if (API.getUser(data.fromID).permission > 2){
+if (arg1 === "on") {
+a.blockskip = "on";
+API.sendChat("/meDJ Resitente a todos que entrarem Ativado!");
+}
+if (arg1 === "off") {
+a.blockskip = "off";
+API.sendChat("/meDJ Resitente a todos que entrarem Desativado!");
 }
 }
 ////////////////////////////////////////////////////////////////////////////////
