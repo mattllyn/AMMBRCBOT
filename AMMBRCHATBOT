@@ -204,11 +204,11 @@ if (message.indexOf("!rdjpromo") == 0)
 if (API.getUser(data.fromID).permission > 2){
 if (arg1 === "on") {
 a.blockskip = "on";
-API.sendChat("/meDJ Resitente a todos que entrarem Ativado!");
+API.sendChat("/meDJ Residente a todos que entrarem. Ativado!");
 }
 if (arg1 === "off") {
 a.blockskip = "off";
-API.sendChat("/meDJ Resitente a todos que entrarem Desativado!");
+API.sendChat("/meDJ Residente a todos que entrarem. Desativado!");
 }
 }
 ////////////////////////////////////////////////////////////////////////////////
