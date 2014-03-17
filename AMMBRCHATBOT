@@ -16,7 +16,7 @@ API.sendChat(":white_check_mark: AMMBR-BOT Ligado. :white_check_mark:");
 
 a = {
 blockskip: "on",
-rdjpromo: "on",
+rdjpromo: "off",
 };
 ////////////////////////////////////////////////////////////////////////////////
 
