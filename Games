@@ -5,8 +5,10 @@ tacos = new Array();
 tacos = ["cigarro","cigarro de maconha","marlboro","nargs","caximbo da paz"];
 cookie = ["um biscoito de chocolate","um cupcake","um cookie de aveia e passas","um brownie 'especial'","um cracker animal","um lanche Scooby"];
 drink = ["Caipirinha", "Wisk", "Tequila", "Champagne", "Martini", "Capeta"];
-abraco = ["agarrou a bunda de","deu um abraço de urso em","deu um abraço gostosinho em","apertou a bundinha de"];
-punirr = ["esfrega uma lixa no rosto de","penetra uma caneta no ouvido de","cutuca os olhos de","da uma mordida em","aperta os mamilos de","cospe em"];
+abraco = ["deu um abraço de urso em","deu um abraço gostosinho em","da um abraço por traz de","da um abraço de motoqueiro em"];
+safado = ["morde a orelha de","aperta a bundinha de","lambe os mamilos de","morde os lábios de","faz um 69 com","lambe o umbigo de","chupa o dedo de","lambe a virilha de"];
+punirr = ["penetra uma caneta em","cutuca os olhos de","aperta os mamilos de","cospe em"];
+punir2 = ["dá uma piruzada na cara de","passa DST para","penetra um dildo em","enfia um peixe elétrico no rabo de","da um tapa no saco de"];
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.CHAT,onChat);
 function onChat(data) {
@@ -44,6 +46,30 @@ break;
 
 }
 break;
+
+case "punir2":
+if(typeof command[1] == "@"){
+var crowd = API.getUsers();
+var randomUser = Math.floor(Math.random() * crowd.length);
+var randomPunir2 = Math.floor(Math.random() * punir2.length);
+var randomSentence = Math.floor(Math.random() * 1);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+punir2[randomPunir2]+" @"+command[1]+" ");
+break;
+}
+}else{
+if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
+var randomPunir2 = Math.floor(Math.random() * punir2.length);
+var randomSentence = Math.floor(Math.random() * 1);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+punir2[randomPunir2]+" @"+command[1]+" ");
+break;
+}
+
+}
+break;
 ////////////////////////////////////////////////////////////////////////////////
 case "cookie":
 if(typeof command[1] == "@"){
@@ -53,18 +79,12 @@ var randomCookie = Math.floor(Math.random() * cookie.length);
 var randomSentence = Math.floor(Math.random() * 3);
 switch(randomSentence){
 case 0:
-API.sendChat("@"+command[1]+" Quer um cookie?");
-setTimeout(function(){
-API.sendChat("Deu cookies para @"+command[1]+", Divirta-se! :trollface:");
-}, 650);
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
 break;
 case 1:
 API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
 break;
 case 2:
-API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-break;
-case 3:
 API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
 break;
 }
@@ -74,18 +94,12 @@ var randomCookie = Math.floor(Math.random() * cookie.length);
 var randomSentence = Math.floor(Math.random() * 3);
 switch(randomSentence){
 case 0:
-API.sendChat("@"+crowd[randomUser].username+" Quer um cookie?");
-setTimeout(function(){
-API.sendChat("Deu cookies para @"+command[1]+", Divirta-se! :trollface:");
-}, 650);
+API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
 break;
 case 1:
 API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
 break;
 case 2:
-API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
-break;
-case 3:
 API.sendChat("@" +command[1]+ ", @" + data.from + " recompensou-lhe com " + cookie[randomCookie]+ ". Divirta-se!");
 break;
 }}
@@ -160,6 +174,28 @@ break;
 }}
 break;
 ////////////////////////////////////////////////////////////////////////////////
+case "safado":
+if(typeof command[1] == "@"){
+var crowd = API.getUsers();
+var randomUser = Math.floor(Math.random() * crowd.length);
+var randomSafado = Math.floor(Math.random() * safado.length);
+var randomSentence = Math.floor(Math.random() * 2);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+safado[randomSafado]+" @"+command[1]+"!");
+break;
+}
+}else{
+if(command[1].indexOf("@") === 0) command[1] = command[1].substring(1);
+var randomSafado = Math.floor(Math.random() * safado.length);
+var randomSentence = Math.floor(Math.random() * 1);
+switch(randomSentence){
+case 0:
+API.sendChat("@"+data.from+" "+safado[randomSafado]+" @"+command[1]+"!");
+break;
+}
+}
+break;
 case "abraço":
 if(typeof command[1] == "@"){
 var crowd = API.getUsers();
