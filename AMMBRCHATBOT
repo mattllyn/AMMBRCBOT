@@ -203,11 +203,11 @@ var arg1 = msg.split(" ")[1];
 if (message.indexOf("!rdjpromo") == 0)
 if (API.getUser(data.fromID).permission > 2){
 if (arg1 === "on") {
-a.blockskip = "on";
+a.rdjpromo = "on";
 API.sendChat("/meDJ Residente a todos que entrarem. Ativado!");
 }
 if (arg1 === "off") {
-a.blockskip = "off";
+a.rdjpromo = "off";
 API.sendChat("/meDJ Residente a todos que entrarem. Desativado!");
 }
 }
