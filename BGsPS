@@ -124,7 +124,7 @@ $("#user-meta").css("color", "pink");
 }
 //verde
 if (cmd[0] == "/verde"){
-("span.username").css("color", "#32CD32");
+$("span.username").css("color", "#32CD32");
 $("#room-name").css("color", "#32CD32");
 $("#now-playing-media").css("color", "#32CD32");
 $("#hit").css("color", "#32CD32");
