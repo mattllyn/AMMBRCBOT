@@ -19,7 +19,7 @@ var style = document.createElement('style');
 style.type = 'text/css';style.innerHTML = '.LGreen { color: rgb(124, 252, 0)!important;border-left: rgb(124, 252, 0) 3px solid!important; }'; //verded
 document.getElementsByTagName('head')[0].appendChild(style);
 
-$("#chat-messages").append("<div class='LGreen system'></i><span class='text'> Planos de Fundo script ativado! use /cmdsbg </span></div>");
+$("#chat-messages").append("<div class='LGreen system'></i><span class='text'> Planos de Fundo 1.8 script ativado! use /cmdsbg </span></div>");
 b && a.scrollTop(a[0].scrollHeight);
 
 API.on(API.CHAT_COMMAND, command);
@@ -27,7 +27,7 @@ function command(value) {
 cmd = value.split(" ");
 if (cmd[0] == "/comandosbg" || cmd[0] == "/cmdsbg"){
 $("#chat-messages").append("<div class='skip'></i><span class='text'>Planos de Fundo, Comandos e Informações:</span></div>");
-$("#chat-messages").append("<div class='skip'></i><span class='text'>Para mudar o plando de fundo digite: /bg1 a 8<br/>Exemplo: /bg1, /bg2... <br/>Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg <br/>Para desativar as cores digite: /coresoff <br/>Para mudar as cores digite: /colorido /verde /vermelho /azul /amarelo /rosa /laranja</span></div>");
+$("#chat-messages").append("<div class='skip'></i><span class='text'>Para mudar o plando de fundo digite: /bg1 a 18<br/>Exemplo: /bg1, /bg2... <br/>Para ativar/desativar os planos de fundo, digite:/ativarbg /desativarbg <br/>Para desativar as cores digite: /coresoff <br/>Para mudar as cores digite: /colorido /verde /vermelho /azul /amarelo /rosa /laranja</span></div>");
 $("#chat-messages").append("<div class='skip'></i><span class='text'>BGs por: PlugStation.  Todos os direitos reservados.</span></div>");
 b && a.scrollTop(a[0].scrollHeight);
 }
@@ -87,6 +87,77 @@ $("body").css("background-image", "url(http://i.imgur.com/GZKgCpk.png)");
 $("#playback .background").hide();
 $("#playback-container").css("border", "2px solid #4D4D4D");
 }
+if (cmd[0] == "/bg9"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 9: Mordor.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/9DVTnnW.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg10"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 10: Red Rocks Theme.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/lK4GttQ.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg11"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 11: Digital Dungeon (Lite).</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/zSMRtE6.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg12"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 12: TT.fm Red Theme.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/u36VR4n.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg13"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 13: Off The Grid v1.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/JZjGLPH.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg14"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 14: Off The Grid v2.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/M4Z45oA.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg15"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 15: Digital Desert.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/tOEACrk.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg16"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 16: Abandoned Ballroom.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/1aw3xcd.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg17"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 17: Skygazer Theme (lite).</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/k9zVa92.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+if (cmd[0] == "/bg18"){
+$("#chat-messages").append("<div class='Orange system'></i><span class='text'>Plano de Fundo 18: Orbital Lounge.</span></div>");
+b && a.scrollTop(a[0].scrollHeight);
+$("body").css("background-image", "url(http://i.imgur.com/EFXFnql.png)");
+$("#playback .background").hide();
+$("#playback-container").css("border", "2px solid #4D4D4D");
+}
+
 if (cmd[0] == "/bg0"){
 $("body").css("background-image", "url(http://plug.dj/_/static/images/background.cd89e94.jpg)");
 $("body").css("background-color", "rgb(0, 0, 0)");
