@@ -149,19 +149,18 @@ fan: [
 ],
 };
 ////////////////////////////////////////////////////////////////////////////////
-API.on(API.DJ_ADVANCE, up);
-function up(update){
+API.on(API.DJ_ADVANCE, function (update) {
 var hist = API.getHistory();
 var djID = API.getHistory()[0].user.id;
 for (var i in hist) {
 if (hist[i].media.id == update.media.id) {
-API.sendChat("Esse video está no histórico!!!");
+API.sendChat("Esse video está no histórico! Pulando...");
 API.moderateForceSkip();
-if (API.getUsers().length >= 3) {
+/*if (API.getUsers().length >= 3) {
 API.moderateMoveDJ(djID, 3);
 } else {
 API.moderateMoveDJ(djID, API.getUsers().length);
-}
+}*/
 break;
 }
 }
@@ -329,8 +328,6 @@ if (API.getUser(data.fromID).permission > 1){
 API.moderateRemoveDJ(userid);
 }
 }
-
- 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.CHAT, function(data){
