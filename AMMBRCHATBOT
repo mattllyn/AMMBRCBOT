@@ -149,12 +149,30 @@ fan: [
 ],
 };
 ////////////////////////////////////////////////////////////////////////////////
-
+API.on(API.DJ_ADVANCE, function (update) {
+if (a.historyskip == "on") {
+var djName = API.getDJ().username;
+var hist = API.getHistory();
+var djID = API.getHistory()[0].user.id;
+for (var i in hist) {
+if (hist[i].media.id == update.media.id) {
+API.sendChat("/me@" + djName + " Esse video está no histórico! Vou te dar outra chance.");
+API.moderateForceSkip();
+if (API.getUsers().length >= 3) {
+API.moderateMoveDJ(djID, 3);
+} else {
+API.moderateMoveDJ(djID, API.getUsers().length);
+}
+break;
+}
+}
+}
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.CHAT,onChat);
 function onChat(data) {
 var message = data.message.toLowerCase();
-
+var msg = data.message;
+var arg1 = msg.split(" ")[1];
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!") == 0) {
 API.moderateDeleteChat(data.chatID);
@@ -185,8 +203,6 @@ $("#chat-messages").append("<div class='Blue system'><i class='icon icon-refresh
 location.reload(true);
 }, (1*1000));
 }
-var msg = data.message;
-var arg1 = msg.split(" ")[1];
 if (message.indexOf("!putaria") == 0)
 if (API.getUser(data.fromID).permission > 2){
 if (arg1 === "on") {
@@ -198,8 +214,6 @@ a.blockskip = "off";
 API.sendChat("/meVideos bloqueados desativados!");
 }
 }
-var msg = data.message;
-var arg1 = msg.split(" ")[1];
 if (message.indexOf("!rdjpromo") == 0)
 if (API.getUser(data.fromID).permission > 2){
 if (arg1 === "on") {
@@ -223,6 +237,8 @@ setTimeout(function(){
 
 ////////////////////////////////////////////////////////////////////////////////
 //User Commands
+////////////////////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!djinfo") == 0) {
 var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
@@ -296,9 +312,13 @@ if (cmd == "!add")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateAddDJ(userid);
 }
-if (cmd == "!banir")
+if (cmd == "!kick")
 if (API.getUser(data.fromID).permission > 1){
 API.moderateBanUser(userid, 0, API.BAN.HOUR);
+}
+if (cmd == "!ban")
+if (API.getUser(data.fromID).permission > 1){
+API.moderateBanUser(userid, 0, API.BAN.PERMA);
 }
 if (cmd == "!desbanir")
 if (API.getUser(data.fromID).permission > 2){
