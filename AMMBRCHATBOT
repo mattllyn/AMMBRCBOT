@@ -227,7 +227,7 @@ API.sendChat("/meDJ Residente a todos que entrarem. Desativado!");
 }
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!limparchat") == 0)
-if (API.getUser(data.fromID).permission > 2){
+if (API.getUser(data.fromID).permission > 3){
 var arg = $("#chat-messages").children();
 for(var i=0;i<arg.length;i++) API.moderateDeleteChat(arg[i].className.substr(arg[i].className.indexOf('cid-')+4,14));
 deleteAll = true;
