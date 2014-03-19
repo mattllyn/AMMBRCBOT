@@ -149,14 +149,13 @@ fan: [
 ],
 };
 ////////////////////////////////////////////////////////////////////////////////
-API.on(API.DJ_ADVANCE, function (update) {
-if (a.historyskip == "on") {
-var djName = API.getDJ().username;
+API.on(API.DJ_ADVANCE, up);
+function up(update){
 var hist = API.getHistory();
 var djID = API.getHistory()[0].user.id;
 for (var i in hist) {
 if (hist[i].media.id == update.media.id) {
-API.sendChat("/me@" + djName + " Esse video está no histórico! Vou te dar outra chance.");
+API.sendChat("Esse video está no histórico!!!");
 API.moderateForceSkip();
 if (API.getUsers().length >= 3) {
 API.moderateMoveDJ(djID, 3);
@@ -167,6 +166,7 @@ break;
 }
 }
 }
+
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.CHAT,onChat);
 function onChat(data) {
