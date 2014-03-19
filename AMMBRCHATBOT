@@ -215,7 +215,7 @@ API.sendChat("/meVideos bloqueados desativados!");
 }
 }
 if (message.indexOf("!rdjpromo") == 0)
-if (API.getUser(data.fromID).permission > 2){
+if (API.getUser(data.fromID).permission > 3){
 if (arg1 === "on") {
 a.rdjpromo = "on";
 API.sendChat("/meDJ Residente a todos que entrarem. Ativado!");
@@ -317,7 +317,7 @@ if (API.getUser(data.fromID).permission > 1){
 API.moderateBanUser(userid, 0, API.BAN.HOUR);
 }
 if (cmd == "!ban")
-if (API.getUser(data.fromID).permission > 1){
+if (API.getUser(data.fromID).permission > 2){
 API.moderateBanUser(userid, 0, API.BAN.PERMA);
 }
 if (cmd == "!desbanir")
