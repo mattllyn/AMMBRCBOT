@@ -124,30 +124,7 @@ regraslink: "http://goo.gl/i7JUIX",
 contatolink: "http://goo.gl/LccZ6t",
 };
 ////////////////////////////////////////////////////////////////////////////////
-mendigos = {
-fan: [
-"fan me", "virem meu fa", "fun me", "agora é seu fã", "become my fan", "troco fa", "fan for fan", "fan 4 fan", "fan4fan", "add me as a fan",
-"fun4fun", "fun 4 fun", "meu fa", "is now your fan", "reciprocate", "fans me", "give fan", "add as fan",
-"fan p1z", "fan p1s", "p1s fan", "p1z fan", "become fan", "trade fan", "fan i fan", "be my fan", "f.a.n",
-"gimme fan", "fans at fan", "fans p1z", "fans p1s", "i fans back", "fanforfan", "f-an:", "f.an",
-"add me fan", "retribuo", "fan to me", "become a fan", "fan-to-fan", "fan to fan", "sejam meus fA£", "fa-n",
-"can i have fan", "p1ease fan", "add me in fan", "i want fan", "fan p1ease", "i need fan", "fa.n", "f-a-n",
-"i need a fan", "i want a fan", "by my fan", "fann me", "return fan", "by my fan", "give meua fan",
-"seja meu fa", "seja meus fa", "seja meu f§£", "seja meus f§£", "f§£ p1ease", "f§£ p1s", "fA£ p1z",
-"fan x fan", "add me to fan", "fan za fan", "fan ze fan", "become in fan", "back fan",
-"virem meu seguidor", "virem meu seguir", "fan is fan", "fun for fun", "any fan accept",
-"any fan me", "fan 4fan", "fan4 fan", "turn my fan", "turn i fan", "be a fan of me", "come my fan",
-"p1zz fan", "p1ss fan", "procuro fan", "come back a fan", "fan y fan", "give me fan", "fan = fan",
-"fan=fan", "fan+fan", "fan + fan", "fan or fan", "beacome a fan of me", "beacome my fan",
-"bcome a fan of me", "bcome my fan", "fans to fan", "be me fan", "trocar fan", "fan for me",
-"fans for me", "a11 for fan", "fans into fans", "fan into fan", "f(a)n me", "pres to my fan",
-"press to my fan", "fan p1eace", "fans p1eace", "give my a fan", "add fan", "adds me to fan",
-"f 4 f", "can i has fan", "can i have fan", "give to me a fan", "give my fan", "phan me",
-"fan for a fan", "fan vs fan", "fan turn i turn", "fan turn in turn", "sejam meu fa", "agora A© seu fA£!",
-"sejam meus fa", "be fan of me", "fan in fan", "add to fan", "fan this account", "fans for fan",
-"fan my account", "fan back", "add me for fan","fans 4 fan", "fans4fan","turn fan who contribute"
-],
-};
+
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.DJ_ADVANCE, upup);
 function upup(update) {
@@ -330,16 +307,5 @@ API.moderateRemoveDJ(userid);
 }
 }
 ////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-API.on(API.CHAT, function(data){
-msg = data.message.toLowerCase(), chatID = data.chatID;
-for(var i = 0; i < mendigos.fan.length; i++){
-if(msg.indexOf(mendigos.fan[i].toLowerCase()) > -1){
-API.moderateDeleteChat(chatID);
-responses = [" @{beggar} não mendigue fãs!!!"];
-r = Math.floor(Math.random() * responses.length);
-API.sendChat(responses[r].replace("{beggar}", data.from));
-}
-}
-});
+
 ////////////////////////////////////////////////////////////////////////////////
