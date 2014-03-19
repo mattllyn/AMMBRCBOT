@@ -93,8 +93,8 @@ return;
 }
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.USER_JOIN, UserJoin2);
-if (a.rdjpromo === "on") {
 function UserJoin2(user){
+if (a.rdjpromo === "on") {
 API.moderateSetRole(user.id, API.ROLE.RESIDENTDJ);
 }
 }
