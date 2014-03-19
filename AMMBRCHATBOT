@@ -149,7 +149,8 @@ fan: [
 ],
 };
 ////////////////////////////////////////////////////////////////////////////////
-API.on(API.DJ_ADVANCE, function (update) {
+API.on(API.DJ_ADVANCE, upup);
+function upup(update) {
 var hist = API.getHistory();
 var djID = API.getHistory()[0].user.id;
 for (var i in hist) {
