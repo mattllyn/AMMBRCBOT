@@ -1,0 +1,20 @@
+var scripts = [
+"https://raw.githubusercontent.com/mattllyn/AMMBRCBOT/master/Bot", //ChatBot
+"https://raw.github.com/mattllyn/AMMBRCBOT/master/BGsPS", //Bgs
+"https://raw.github.com/mattllyn/AMMBRCBOT/master/Games", //Games
+"https://raw.github.com/mattllyn/AMMBRCBOT/master/MATTBOT%20INTERAGE" //Mattbot Interage
+];
+
+function load(script)
+{
+    if(typeof script === "undefined")
+        script = 0;
+    $.getScript(scripts[script++], function(){
+        if(script < scripts.length)
+        {
+            load(script);
+        }
+    });
+}
+
+load();
