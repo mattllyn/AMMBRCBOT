@@ -1,21 +1,23 @@
-var scripts = [
-"http://pastebin.com/raw.php?i=F468hHgE", //ChatBot
-"http://pastebin.com/raw.php?i=aX7AUMnR", //Bgs
-"http://pastebin.com/raw.php?i=rSba49E9", //Games
-"http://pastebin.com/raw.php?i=fPw0MHq0", //Mattbot Interage
-"http://pastebin.com/raw.php?i=t1usCNnQ" //AutoWoot
-];
+$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Carregando Scripts...</span></div>");
+$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Aguarde...</span></div>");
 
-function load(script)
-{
-    if(typeof script === "undefined")
-        script = 0;
-    $.getScript(scripts[script++], function(){
-        if(script < scripts.length)
-        {
-            load(script);
-        }
-    });
-}
+setTimeout (function) {
+$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Ativando ChatBot...</span></div>");
+$.getScript("http://pastebin.com/raw.php?i=F468hHgE"); //ChatBot
+}, 2000);
 
-load();
+setTimeout (function) {
+$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Ativando Scripts secundários do ChatBot...</span></div>");
+$.getScript("http://pastebin.com/raw.php?i=rSba49E9"); //Games
+$.getScript("http://pastebin.com/raw.php?i=fPw0MHq0"); //Mattbot Interage
+}, 3000);
+
+setTimeout (function) {
+$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Ativando outros scripts...</span></div>");
+$.getScript("http://pastebin.com/raw.php?i=t1usCNnQ"); //AutoWoot
+$.getScript("http://pastebin.com/raw.php?i=aX7AUMnR"); //Bgs
+}, 4000);
+
+setTimeout (function) {
+$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Scripts Carregados!!!</span></div>");
+}, 4500);
