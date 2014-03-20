@@ -1,8 +1,9 @@
 var scripts = [
-"https://raw.githubusercontent.com/mattllyn/AMMBRCBOT/master/Bot", //ChatBot
-"https://raw.github.com/mattllyn/AMMBRCBOT/master/BGsPS", //Bgs
-"https://raw.github.com/mattllyn/AMMBRCBOT/master/Games", //Games
-"https://raw.github.com/mattllyn/AMMBRCBOT/master/MATTBOT%20INTERAGE" //Mattbot Interage
+"http://pastebin.com/raw.php?i=F468hHgE", //ChatBot
+"http://pastebin.com/raw.php?i=aX7AUMnR", //Bgs
+"http://pastebin.com/raw.php?i=rSba49E9", //Games
+"http://pastebin.com/raw.php?i=fPw0MHq0", //Mattbot Interage
+"http://pastebin.com/raw.php?i=t1usCNnQ" //AutoWoot
 ];
 
 function load(script)
