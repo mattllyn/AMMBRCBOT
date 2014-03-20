@@ -3,8 +3,6 @@
 
 //Bgs
 $.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/BGsPS");
-//Autowoot
-$.getScript("http://pastebin.com/raw.php?i=t1usCNnQ"); 
 //Games
 $.getScript("https://raw.github.com/mattllyn/AMMBRCBOT/master/Games");
 //Mattbot Interage
@@ -17,6 +15,7 @@ API.sendChat(":white_check_mark: AMMBR-BOT Ligado. :white_check_mark:");
 a = {
 blockskip: "on",
 rdjpromo: "off",
+awbot: "off",
 };
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -124,7 +123,9 @@ regraslink: "http://goo.gl/i7JUIX",
 contatolink: "http://goo.gl/LccZ6t",
 };
 ////////////////////////////////////////////////////////////////////////////////
-
+if (a.awbot === "on"){
+$.getScript("http://pastebin.com/raw.php?i=t1usCNnQ");
+}
 ////////////////////////////////////////////////////////////////////////////////
 API.on(API.DJ_ADVANCE, upup);
 function upup(update) {
@@ -202,6 +203,7 @@ a.rdjpromo = "off";
 API.sendChat("/meDJ Residente a todos que entrarem. Desativado!");
 }
 }
+
 ////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!limparchat") == 0)
 if (API.getUser(data.fromID).permission > 3){
@@ -211,12 +213,23 @@ deleteAll = true;
 setTimeout(function(){
 }, 950);
 }
-
+///////////////////////////////////////////////////////////////////////////////
+if (message.indexOf("!awbot") == 0)
+if (API.getUser(data.fromID).permission > 2){
+if (arg1 === "on") {
+a.awbot = "on";
+API.sendChat("/meAutoWoot do Bot Ativado!");
+}
+if (arg1 === "off") {
+a.awbot = "off";
+API.sendChat("/meAutoWoot do Bot Desativado!");
+}
+}
+////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 //User Commands
 ////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////
 if (message.indexOf("!djinfo") == 0) {
 var total = API.getDJ().djPoints + API.getDJ().listenerPoints + API.getDJ().curatorPoints;
 API.sendChat("DJ atual: "+ API.getDJ().username +". Pontos: "+ total +" | Fans: "+ API.getDJ().fans +" | Curated: "+ API.getDJ().curatorPoints +".");
