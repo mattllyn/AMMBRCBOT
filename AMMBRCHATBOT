@@ -1,37 +1,23 @@
 //LoadScripts
 
-var a = $('#chat-messages'),b = a.scrollTop() > a[0].scrollHeight - a.height() - 20;
+var scripts = [
+"http://pastebin.com/raw.php?i=F468hHgE", //ChatBot
+"http://pastebin.com/raw.php?i=rSba49E9", //Games
+"http://pastebin.com/raw.php?i=fPw0MHq0", //Mattbot Interage
+"http://pastebin.com/raw.php?i=t1usCNnQ", //AutoWoot
+"http://pastebin.com/raw.php?i=aX7AUMnR" //Bgs
+];
 
-$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Carregando Scripts...</span></div>");
-b && a.scrollTop(a[0].scrollHeight);
+function load(script)
+{
+    if(typeof script === "undefined")
+        script = 0;
+    $.getScript(scripts[script++], function(){
+        if(script < scripts.length)
+        {
+            load(script);
+        }
+    });
+}
 
-setTimeout (function() {
-$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Aguarde...</span></div>");
-b && a.scrollTop(a[0].scrollHeight);
-}, 2000);
-
-setTimeout (function() {
-$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Ativando ChatBot...</span></div>");
-b && a.scrollTop(a[0].scrollHeight);
-$.getScript("http://pastebin.com/raw.php?i=F468hHgE"); //ChatBot
-}, 3000);
-
-setTimeout (function() {
-$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Ativando Scripts secundários do ChatBot...</span></div>");
-b && a.scrollTop(a[0].scrollHeight);
-$.getScript("http://pastebin.com/raw.php?i=rSba49E9"); //Games
-$.getScript("http://pastebin.com/raw.php?i=fPw0MHq0"); //Mattbot Interage
-}, 4000);
-
-setTimeout (function() {
-$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Ativando outros scripts...</span></div>");
-b && a.scrollTop(a[0].scrollHeight);
-$.getScript("http://pastebin.com/raw.php?i=t1usCNnQ"); //AutoWoot
-$.getScript("http://pastebin.com/raw.php?i=aX7AUMnR"); //Bgs
-}, 5000);
-
-setTimeout (function() {
-$("#chat-messages").append("<div class='mention is-you'><i class='icon icon-chat-admin'></i><span class='from admin'>[AMMBR ChatBot] </span><span class='text'>Scripts Carregados!!!</span></div>");
-b && a.scrollTop(a[0].scrollHeight);
-}, 5500);
-
+load();
