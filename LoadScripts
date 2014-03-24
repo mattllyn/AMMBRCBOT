@@ -2,8 +2,6 @@
 
 var scripts = [
 "http://pastebin.com/raw.php?i=F468hHgE", //ChatBot
-"http://pastebin.com/raw.php?i=rSba49E9", //Games
-"http://pastebin.com/raw.php?i=fPw0MHq0", //Mattbot Interage
 "http://pastebin.com/raw.php?i=t1usCNnQ", //AutoWoot
 "http://pastebin.com/raw.php?i=aX7AUMnR" //Bgs
 ];
